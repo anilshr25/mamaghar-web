@@ -8,7 +8,7 @@ storage/app/public
 storage/framework/cache
 storage/framework/sessions
 storage/framework/views
-storage/logs/*
+storage/logs/laravel.log
 
 /vendor
 .idea
