@@ -147,7 +147,7 @@
                             <div class="item">
                                 <div class="quote-sep">
                                     <h4>"Every good day starts off with a cappuccino, and there's no place better to enjoy
-                                        some frothy caffeine than at the Thalia Hotel."</h4>
+                                        some frothy caffeine than at the Mamaghar Hotel."</h4>
                                     <h6>Terry Mitchell</h6>
                                 </div>
                             </div>
