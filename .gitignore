@@ -3,7 +3,12 @@
 /public/storage
 /public/uploads
 /storage/*.key
-/storage/*
+
+storage/*
+storage/app/*
+storage/framework/*
+storage/logs/*
+
 /vendor
 .idea
 .env
