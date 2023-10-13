@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
-                <p>2019 © Thalia. All rights reserved.</p>
+                <p>2019 © Mamaghar. All rights reserved.</p>
             </div>
             <div class="col-md-6 text-center text-md-right">
                 <a href="#" class="social-footer-bottom">facebook</a>
