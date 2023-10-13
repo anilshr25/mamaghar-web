@@ -57,19 +57,6 @@
     ln -nfs {{ $new_release_dir }} {{ $app_dir }}/current
 @endtask
 
-@task('clean_old_releases')
-    # This will list our releases by modification time and delete all but the 3 most recent.
-    @if (!empty($releases_dir) && $releases_dir != '/')
-        purging=$(ls -dt {{ $releases_dir }}/* | tail -n +8);
-        if [ "$purging" != "" ]; then
-        echo Purging old releases: $purging;
-        rm -rf $purging;
-        else
-        echo "No releases found for purging at this time";
-        fi
-    @endif
-@endtask
-
 @task('migrate_db')
     echo 'Running Migration'
     cd {{ $live_dir }}
@@ -90,4 +77,17 @@
     php artisan optimize
     composer dump
     echo "Deployment complete"
+@endtask
+
+@task('clean_old_releases')
+    # This will list our releases by modification time and delete all but the 3 most recent.
+    @if (!empty($releases_dir) && $releases_dir != '/')
+        purging=$(ls -dt {{ $releases_dir }}/* | tail -n +8);
+        if [ "$purging" != "" ]; then
+        echo Purging old releases: $purging;
+        rm -rf $purging;
+        else
+        echo "No releases found for purging at this time";
+        fi
+    @endif
 @endtask
