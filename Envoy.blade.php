@@ -18,6 +18,7 @@
     migrate_db
     restart_cron_services
     clean_old_releases
+    deploy_portal
 @endmacro
 
 @task('clone_repository')
@@ -90,4 +91,12 @@
         echo "No releases found for purging at this time";
         fi
     @endif
+@endtask
+
+@task('deploy_portal')
+    echo 'Updating portal'
+    cd /var/www/html/visionclub
+    rm -rf portal
+    mkdir portal
+    aws s3 sync s3://visionclub/portal portal --delete --endpoint-url=https://s3.ap-southeast-1.wasabisys.com
 @endtask
