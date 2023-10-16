@@ -17,6 +17,7 @@ class Adventure extends Model
         'title',
         'slug',
         'category_id',
+        'image',
         'description',
         'is_active'
     ];
@@ -28,6 +29,17 @@ class Adventure extends Model
                 'source' => 'title',
             ],
         ];
+    }
+
+    protected $appends = ['file_path'];
+
+    public function getFilePathAttribute()
+    {
+        if (!empty($this->image)) {
+            $uploadPath = $this->getUploadPath($this->uploadPath);
+            return getFilePath($uploadPath, $this->image);
+        }
+        return [];
     }
 
     public function category()

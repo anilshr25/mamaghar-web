@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Mail;
 class SiteSettingService extends ImageService
 {
     protected $setting;
-    public $uploadPath = 'setting';
 
     public function __construct(SiteSetting $setting)
     {
@@ -39,34 +38,86 @@ class SiteSettingService extends ImageService
 
     public function createOrUpdate($data)
     {
-        $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == true) ? true : 0;
+        $setting = $this->getSetting();
+        if ($setting)
+            return $this->update($setting,$data);
+        else
+            return $this->store($data);
+    }
+
+    public function store($data)
+    {
         if (!empty($data['logo_file'])) {
-            $data['logo'] = $this->uploadFile($data['logo_file'], $this->uploadPath);
+            $data['logo'] = $this->uploadFile($data['logo_file'], 'setting/logo');
         }
 
         if (!empty($data['app_logo_file'])) {
-            $data['app_logo'] = $this->uploadFile($data['app_logo_file'], $this->uploadPath);
+            $data['app_logo'] = $this->uploadFile($data['app_logo_file'], 'setting/app-logo');
         }
 
         if (!empty($data['fav_icon_file'])) {
-            $data['fav_icon'] = $this->uploadFile($data['fav_icon_file'], $this->uploadPath);
+            $data['fav_icon'] = $this->uploadFile($data['fav_icon_file'], 'setting/fav-icon');
         }
 
         if (!empty($data['login_bg_image_file'])) {
-            $data['login_bg_image'] = $this->uploadFile($data['login_bg_image_file'], $this->uploadPath);
+            $data['login_bg_image'] = $this->uploadFile($data['login_bg_image_file'], 'setting/login-image');
         }
 
         if (!empty($data['email_logo_image_file'])) {
-            $data['email_logo_image'] = $this->uploadFile($data['email_logo_image_file'], $this->uploadPath);
+            $data['email_logo_image'] = $this->uploadFile($data['email_logo_image_file'], 'setting/email-logo');
+        }
+
+        if (!empty($data['footer_logo_file'])) {
+            $data['footer_logo'] = $this->uploadFile($data['footer_logo_file'], 'setting/footer-logo');
+        }
+
+        return $this->setting->create($data);
+    }
+
+    public function update($setting, $data)
+    {
+        if (!empty($data['logo_file'])) {
+            if (!empty($setting->logo)) {
+                $this->deleteUploaded($setting->logo, 'setting/logo');
+            }
+            $data['logo'] = $this->uploadFile($data['logo_file'], 'setting/logo');
+        }
+
+        if (!empty($data['app_logo_file'])) {
+            if (!empty($setting->app_logo)) {
+                $this->deleteUploaded($setting->app_logo, 'setting/app-logo');
+            }
+            $data['app_logo'] = $this->uploadFile($data['app_logo_file'], 'setting/app-logo');
+        }
+
+        if (!empty($data['fav_icon_file'])) {
+            if (!empty($setting->fav_icon)) {
+                $this->deleteUploaded($setting->fav_icon, 'setting/fav-icon');
+            }
+            $data['fav_icon'] = $this->uploadFile($data['fav_icon_file'], 'setting/fav-icon');
+        }
+
+        if (!empty($data['login_bg_image_file'])) {
+            if (!empty($setting->login_bg_image)) {
+                $this->deleteUploaded($setting->login_bg_image, 'setting/login-image');
+            }
+            $data['login_bg_image'] = $this->uploadFile($data['login_bg_image_file'], 'setting/login-image');
+        }
+
+        if (!empty($data['email_logo_image_file'])) {
+            if (!empty($setting->email_logo_image)) {
+                $this->deleteUploaded($setting->email_logo_image, 'setting/email-logo');
+            }
+            $data['email_logo_image'] = $this->uploadFile($data['email_logo_image_file'], 'setting/email-logo');
         }
         if (!empty($data['footer_logo_file'])) {
-            $data['footer_logo'] = $this->uploadFile($data['footer_logo_file'], $this->uploadPath);
+            if (!empty($setting->footer_logo)) {
+                $this->deleteUploaded($setting->footer_logo, 'setting/footer-logo');
+            }
+            $data['footer_logo'] = $this->uploadFile($data['footer_logo_file'], 'setting/footer-logo');
         }
-        $setting = $this->getSetting();
-        if (isset($data['id']) && $setting)
-            return $setting->update($data);
-        else
-            return $this->setting->create($data);
+
+        return $setting->update($data);
     }
 
     public function testAwsUpload($file)

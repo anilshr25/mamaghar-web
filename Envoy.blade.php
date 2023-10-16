@@ -15,8 +15,6 @@
     run_composer
     update_permissions
     release_deployment
-    migrate_db
-    restart_cron_services
     clean_old_releases
     deploy_portal
 @endmacro
@@ -95,8 +93,6 @@
 
 @task('deploy_portal')
     echo 'Updating portal'
-    cd /var/www/html/visionclub
-    rm -rf portal
-    mkdir portal
-    aws s3 sync s3://visionclub/portal portal --delete --endpoint-url=https://s3.ap-southeast-1.wasabisys.com
+    cd /var/www/html/mamaghar
+    aws s3 sync s3://mamaghar.com.np/portal portal --delete --endpoint-url=https://s3.ap-southeast-1.wasabisys.com
 @endtask

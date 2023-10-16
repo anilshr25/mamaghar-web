@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3 col-xl-2 px-sm-0">
-                                <a class="booking-button-big" href="search.html">check<br>availability</a>
+                                <a class="booking-button-big" href="#">check<br>availability</a>
                             </div>
                         </div>
                     </div>

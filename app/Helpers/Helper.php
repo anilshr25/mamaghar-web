@@ -322,7 +322,7 @@ function getFilePath($uploadPath, $fileName, $signed = false)
         $thumbPath = $uploadPath . "/thumb/" . $fileName;
         $realPath = buildUploadPathUrl($realPath);
         $thumbPath = buildUploadPathUrl($thumbPath);
-        if (checkForImage($fileName) == 'image') {
+        if (checkFileType($fileName) == 'image') {
             $filePath = [
                 "original" => s3_image_url($realPath, $signed),
                 "thumb" => s3_image_url($thumbPath, $signed),
@@ -333,7 +333,7 @@ function getFilePath($uploadPath, $fileName, $signed = false)
             ];
         }
     } else {
-        if (checkForImage($fileName) == 'image') {
+        if (checkFileType($fileName) == 'image') {
             $filePath = [
                 "original" => asset($uploadPath . "/" . $fileName),
                 "thumb" => asset($uploadPath . "/thumb/" . $fileName),
@@ -380,7 +380,7 @@ function s3_image_url($path, $signed = false)
     }
 }
 
-function checkForImage($imageName)
+function checkFileType($imageName)
 {
     $imageType = ['jpeg', 'jpg', 'png', 'JPEG', 'JPG', 'ico'];
 

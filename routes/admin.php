@@ -19,6 +19,8 @@ Route::post('admin/login', [\App\Http\Controllers\Admin\Auth\LoginController::cl
 Route::post('admin/verify/email-verification-code', [\App\Http\Controllers\Admin\Auth\MFAController::class, 'verifyEmailVerificationCode']);
 Route::post('admin/verify/mfa-verification-code', [\App\Http\Controllers\Admin\Auth\MFAController::class, 'verifyMfaVerificationCode']);
 
+Route::get('admin/site-setting', [\App\Http\Controllers\Admin\SiteSetting\SiteSettingController::class, 'index']);
+
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function ($router) {
 
     $router->get('do-verify', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'doVerify']);
@@ -104,6 +106,12 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function ($router) 
     $router->apiResource('notice', \App\Http\Controllers\Admin\Cms\Notice\NoticeController::class);
     $router->post('notice/sort', [\App\Http\Controllers\Admin\Cms\Notice\NoticeController::class, 'sort']);
 
+    //Media Controller
+    $router->get('media', [\App\Http\Controllers\Admin\Cms\Media\MediaController::class, 'index']);
+    $router->post('media', [\App\Http\Controllers\Admin\Cms\Media\MediaController::class, 'store']);
+    $router->delete('media/{id}', [\App\Http\Controllers\Admin\Cms\Media\MediaController::class, 'destroy']);
+    $router->post('media/sort', [\App\Http\Controllers\Admin\Cms\Media\MediaController::class, 'sort']);
+
     //News and update
     $router->apiResource('news-and-updates', \App\Http\Controllers\Admin\Cms\NewsAndUpdates\NewsAndUpdatesController::class);
     $router->post('news-and-updates/{id}', [\App\Http\Controllers\Admin\Cms\NewsAndUpdates\NewsAndUpdatesController::class, 'update']);
@@ -134,7 +142,6 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function ($router) 
     $router->get('booking-category/get/all', [\App\Http\Controllers\Admin\Booking\Category\BookingCategoryController::class, 'getAllCategory']);
 
     // Site Setting
-    $router->get('site-setting', [\App\Http\Controllers\Admin\SiteSetting\SiteSettingController::class, 'index']);
     $router->get('site-setting/get/colors', [\App\Http\Controllers\Admin\SiteSetting\SiteSettingController::class, 'getSettingColors']);
     $router->post('site-setting', [\App\Http\Controllers\Admin\SiteSetting\SiteSettingController::class, 'createOrUpdate']);
     $router->post('site-setting/test/aws', [\App\Http\Controllers\Admin\SiteSetting\SiteSettingController::class, 'testAwsUpload']);

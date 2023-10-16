@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Adventure\Gallery\Category;
+namespace App\Services\Adventure\Category;
 
 use App\Http\Resources\Adventure\Category\AdventureCategoryResource;
 use App\Models\Adventure\Category\AdventureCategory;

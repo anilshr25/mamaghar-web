@@ -48,7 +48,7 @@
                         <p class="mt-3">Indulge in the rich flavors of traditional Newari cuisine and a variety of
                             delectable dishes that cater to every palate. Our menu offers a culinary journey through Nepali
                             gastronomy.</p>
-                        <a class="mt-1 btn btn-primary" href="services.html">read more</a>
+                        <a class="mt-1 btn btn-primary" href="#">read more</a>
                     </div>
                 </div>
                 <div class="col-md-4 mt-5 mt-md-0">
@@ -57,7 +57,7 @@
                         <h5 class="mt-2">Seminar and Party Hall</h5>
                         <p class="mt-3">Host your seminars, conferences, and parties in our well-equipped halls. With
                             modern amenities and flexible setups, we ensure your events are successful and memorable.</p>
-                        <a class="mt-1 btn btn-primary" href="services.html">read more</a>
+                        <a class="mt-1 btn btn-primary" href="#">read more</a>
                     </div>
                 </div>
                 <div class="col-md-4 mt-5 mt-md-0">
@@ -66,7 +66,7 @@
                         <h5 class="mt-2">Abseiling & Many more adventure</h5>
                         <p class="mt-3">Embark on thrilling adventures with our abseiling and various outdoor activities.
                             Experience the adrenaline rush while exploring the natural beauty of the surroundings.</p>
-                        <a class="mt-1 btn btn-primary" href="services.html">read more</a>
+                        <a class="mt-1 btn btn-primary" href="#">read more</a>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                                 situated at a perfect place to breathe in tres air and enjoy the greenery. Whether you want
                                 a stress-free base for doing business or a relaxing environment with friends and lamily, we
                                 can be your perect companion.</p>
-                            <a class="mt-5 btn btn-primary" href="search.html">check availability</a>
+                            <a class="mt-5 btn btn-primary" href="#">check availability</a>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                                 IS another near
                                 destination. For the nature lovers, Nagi Gumba hike and Shivapuri hike are other special
                                 attractions.</p>
-                            <a class="mt-5 mb-5 btn btn-primary" href="search.html">check availability</a>
+                            <a class="mt-5 mb-5 btn btn-primary" href="#">check availability</a>
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
-                    <a href="services.html">
+                    <a href="#">
                         <div class="img-wrap services-wrap">
                             <img src="img/ser-1.jpg" alt="">
                             <div class="services-text-over">spa salon</div>
@@ -177,7 +177,7 @@
                     </a>
                 </div>
                 <div class="col-sm-6 col-lg-3 pt-4 pt-sm-0">
-                    <a href="services.html">
+                    <a href="#">
                         <div class="img-wrap services-wrap">
                             <img src="img/ser-2.jpg" alt="">
                             <div class="services-text-over">restaurant</div>
@@ -185,7 +185,7 @@
                     </a>
                 </div>
                 <div class="col-sm-6 col-lg-3 pt-4 pt-lg-0">
-                    <a href="services.html">
+                    <a href="#">
                         <div class="img-wrap services-wrap">
                             <img src="img/ser-3.jpg" alt="">
                             <div class="services-text-over">pool</div>
@@ -193,7 +193,7 @@
                     </a>
                 </div>
                 <div class="col-sm-6 col-lg-3 pt-4 pt-lg-0">
-                    <a href="services.html">
+                    <a href="#">
                         <div class="img-wrap services-wrap">
                             <img src="img/ser-4.jpg" alt="">
                             <div class="services-text-over">activities</div>
