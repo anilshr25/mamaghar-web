@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Adventure\Category;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Adventure\Category\AdventureCategoryRequest;
-use App\Services\Adventure\Gallery\Category\AdventureCategoryService;
+use App\Services\Adventure\Category\AdventureCategoryService;
 use Illuminate\Http\Request;
 
 class AdventureCategoryController extends Controller
@@ -18,7 +18,7 @@ class AdventureCategoryController extends Controller
 
     public function index(Request $request)
     {
-        return $this->adventureCategory->paginate(10, $request);
+        return $this->adventureCategory->paginate(20, $request);
     }
 
     public function getAllCategory()

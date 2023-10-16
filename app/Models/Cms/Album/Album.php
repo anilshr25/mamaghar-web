@@ -15,7 +15,7 @@ class Album extends Model
 
     protected $uploadPath = "uploads/album";
 
-    public function sluggable():array
+    public function sluggable(): array
     {
         return [
             'slug' => [
@@ -48,7 +48,8 @@ class Album extends Model
         return $imagePath;
     }
 
-    public function photos(){
-        return $this->hasMany(AlbumValue::class,'album_id');
+    public function photos()
+    {
+        return $this->hasMany(AlbumValue::class, 'album_id');
     }
 }

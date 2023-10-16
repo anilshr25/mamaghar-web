@@ -22,51 +22,36 @@
         </div>
     </div>
     <div class="menu">
-        <a href="index.html">
+        <a href="/">
             <div class="logo">
-                <img src="img/logo.png" alt="">
+                <img src="{{ getSiteSetting()->logo_path['original'] ?? asset('front_assets/img/logo.png') }}"
+                    alt="">
             </div>
         </a>
         <ul>
             <li>
-                <a class="curent-page" href="/">home</a>
-                {{-- <ul>
-                    <li><a class="curent-page" href="index.html">Flip Slider</a></li>
-                    <li><a href="index-1.html">Video Background</a></li>
-                    <li><a href="index-2.html">Moving Image</a></li>
-                </ul> --}}
+                <a class="curent-page" href="/">Home</a>
             </li>
             <li>
-                <a href="room">rooms</a>
-                <ul>
-                    <li><a href="room">Our Rooms</a></li>
-                    <li><a href="rooms-gallery.html">Room Gallery</a></li>
-                    <li><a href="rooms-video.html">Room Video</a></li>
-                </ul>
+                <a href="room">Rooms</a>
             </li>
             <li>
                 <a href="restaurant">Restaurant</a>
-                {{-- <ul>
-                    <li><a href="explore.html">Explore</a></li>
-                    <li><a href="search.html">Search</a></li>
-                    <li><a href="tandc.html">Terms &amp; Conditions</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="restaurant">Restaurant</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                </ul> --}}
             </li>
             <li>
-                <a href="about">about us</a>
+                <a href="restaurant">Adventure</a>
+            </li>
+            <li>
+                <a href="about">About us</a>
             </li>
             <li>
                 <a href="news">News</a>
             </li>
             <li>
-                <a href="contact">contact</a>
+                <a href="contact">Contact</a>
             </li>
             <li>
-                <a href="search.html"><span>book now</span></a>
+                <a href="#"><span>Book now</span></a>
             </li>
         </ul>
     </div>

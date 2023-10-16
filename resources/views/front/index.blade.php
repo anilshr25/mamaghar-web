@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                                 <div class="col-6  col-sm-4 col-lg-2">
-                                    <a class="booking-button" href="search.html">book now</a>
+                                    <a class="booking-button" href="#">book now</a>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +175,7 @@
                                 adventures with us! From rock climbing to exploring hidden caves, our exciting activities
                                 cater to all adventure enthusiasts. Join us for an unforgettable journey filled with
                                 adrenaline and discovery</p>
-                            <a class="mt-5 btn btn-primary" href="search.html">check availability</a>
+                            <a class="mt-5 btn btn-primary" href="#">check availability</a>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
                                 electrifying ambiance. Gather your friends, sip on your favorite drinks, and let the music
                                 weave unforgettable memories. From acoustic serenades to energetic performances, our
                                 weekends are filled with musical magic.</p>
-                            <a class="mt-5 mb-3 btn btn-primary" href="search.html">check availability</a>
+                            <a class="mt-5 mb-3 btn btn-primary" href="#">check availability</a>
                         </div>
                     </div>
                 </div>
@@ -340,7 +340,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3 col-xl-2 px-sm-0">
-                                <a class="booking-button-big" href="search.html">check<br>availability</a>
+                                <a class="booking-button-big" href="#">check<br>availability</a>
                             </div>
                         </div>
                     </div>
@@ -558,113 +558,20 @@
         </div>
     </div>
 
+    @if ($medias)
     <div class="section">
         <div id="owl-sep-2" class="owl-carousel owl-theme">
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/1.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/1-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/2.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/2-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/3.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/3-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/4.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/4-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/5.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/5-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/6.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/6-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/7.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/7-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/8.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/8-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/9.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/9-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/10.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/10-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/1.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/1-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/2.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/2-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/3.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/3-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/4.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/4-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="{{ asset('front_assets/img/gallery/5.jpg') }}" data-fancybox="gallery">
-                    <div class="img-wrap gallery-small">
-                        <img src="{{ asset('front_assets/img/gallery/5-s.jpg') }}" alt="">
-                    </div>
-                </a>
-            </div>
+           @foreach ($medias as $item)
+           <div class="item">
+            <a href="{{ $item->image_path['original'] }}" data-fancybox="gallery">
+                <div class="img-wrap gallery-small">
+                    <img src="{{ $item->image_path['thumb'] }}" alt="{{ $item->type }}">
+                </div>
+            </a>
+        </div>
+           @endforeach
         </div>
     </div>
+    @endif
+
 @endsection

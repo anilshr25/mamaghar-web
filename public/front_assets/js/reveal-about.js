@@ -1,4 +1,4 @@
-  
+
 
 (function() {
         // Fake loading.
@@ -22,7 +22,6 @@
                         revealWidth: '12px',
                         /** Callback for when the revealer is covering the element (halfway through of the whole animation). */
                         onCover: function (contentEl, revealerEl) {
-                            console.log('Element has being covered.');
                             anime({
                                 targets: revealerEl,
                                 width: {
@@ -75,7 +74,6 @@
                         revealWidth: '12px',
                         /** Callback for when the revealer is covering the element (halfway through of the whole animation). */
                         onCover: function (contentEl, revealerEl) {
-                            console.log('Element has being covered.');
                             anime({
                                 targets: revealerEl,
                                 width: {
@@ -118,8 +116,7 @@
 
 
 })(jQuery);
-	
-	
-	
-	
-	
+
+
+
+

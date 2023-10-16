@@ -18,6 +18,7 @@ class AdventureCategoryResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
+            'cover_image' => $this->cover_image,
             'description' => $this->description,
             'is_active' => $this->is_active,
             'status' => getBadgeByStatus($this->is_active),

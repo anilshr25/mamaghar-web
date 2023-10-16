@@ -9,13 +9,14 @@ use App\Services\Cms\Blog\BlogService;
 use App\Services\SiteSetting\SiteSettingService;
 use App\Services\Cms\Slider\SliderService;
 use App\Services\Cms\Faq\FaqService;
-
+use App\Services\Cms\Media\MediaService;
 use App\Services\Room\Category\RoomCategoryService;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     protected $room;
+    protected $media;
     protected $roomCategory;
     protected $restaurant;
     protected $blog;
@@ -30,7 +31,8 @@ class IndexController extends Controller
         BlogService $blog,
         SiteSettingService $setting,
         SliderService $slider,
-        FaqService $faq
+        FaqService $faq,
+        MediaService $media
     )
 
     {
@@ -41,13 +43,15 @@ class IndexController extends Controller
         $this->setting = $setting;
         $this->slider = $slider;
         $this->faq = $faq;
+        $this->media = $media;
     }
 
     public function index()
     {
         $rooms = $this->room->getAllActive();
         $sliders = $this->slider->getFrontSlider();
-        return view('front.index', compact('rooms','sliders'));
+        $medias = $this->media->all();
+        return view('front.index', compact('rooms','sliders', 'medias'));
     }
     public function room()
     {

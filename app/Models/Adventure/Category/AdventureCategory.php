@@ -12,9 +12,12 @@ class AdventureCategory extends Model
 {
     use HasFactory, Sluggable, SoftDeletes, Loggable;
 
+    protected $uploadPath = 'uploads/adventure/category';
+
     protected $fillable = [
         'title',
         'slug',
+        'cover_image',
         'description',
         'is_active'
     ];
@@ -26,6 +29,16 @@ class AdventureCategory extends Model
                 'source' => 'title',
             ],
         ];
+    }
+
+    protected $appends = ['file_path'];
+
+    public function getFilePathAttribute()
+    {
+        if (!empty($this->cover_image)) {
+            return getFilePath($this->uploadPath, $this->cover_image);
+        }
+        return [];
     }
 
     public function category()
