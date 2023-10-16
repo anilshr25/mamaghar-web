@@ -24,30 +24,34 @@
     <div class="menu">
         <a href="/">
             <div class="logo">
-                <img src="{{ getSiteSetting()->logo_path['original'] ?? asset('front_assets/img/logo.png') }}" alt="">
+                <img src="{{ getSiteSetting()->logo_path['original'] ?? asset('front_assets/img/logo.png') }}"
+                    alt="">
             </div>
         </a>
         <ul>
             <li>
-                <a class="curent-page" href="/">home</a>
+                <a class="curent-page" href="/">Home</a>
             </li>
             <li>
-                <a href="room">rooms</a>
+                <a href="room">Rooms</a>
             </li>
             <li>
                 <a href="restaurant">Restaurant</a>
             </li>
             <li>
-                <a href="about">about us</a>
+                <a href="restaurant">Adventure</a>
+            </li>
+            <li>
+                <a href="about">About us</a>
             </li>
             <li>
                 <a href="news">News</a>
             </li>
             <li>
-                <a href="contact">contact</a>
+                <a href="contact">Contact</a>
             </li>
             <li>
-                <a href="#"><span>book now</span></a>
+                <a href="#"><span>Book now</span></a>
             </li>
         </ul>
     </div>
