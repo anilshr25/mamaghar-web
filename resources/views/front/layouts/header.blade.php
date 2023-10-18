@@ -7,16 +7,8 @@
                         class="call-top">{{ getSiteSetting()->phone ?? '98*******' }}</a>
                 </div>
                 <div class="col-6 px-0 px-md-3 py-3 text-right">
-                    <a href="#" class="social-top">fb</a>
-                    <a href="#" class="social-top">tw</a>
-                    <div class="lang-wrap">
-                        eng
-                        <ul>
-                            <li><a href="#">ger</a></li>
-                            <li><a href="#">rus</a></li>
-                            <li><a href="#">ser</a></li>
-                        </ul>
-                    </div>
+                    <span class="call-top">Email:</span> <a href="#"
+                        class="call-top">{{ getSiteSetting()->email ?? 'email' }}</a>
                 </div>
             </div>
         </div>
@@ -33,22 +25,22 @@
                 <a class="curent-page" href="/">Home</a>
             </li>
             <li>
-                <a href="room">Rooms</a>
+                <a href="{{ route('front.room') }}">Rooms</a>
             </li>
             <li>
-                <a href="restaurant">Restaurant</a>
+                <a href="{{ route('front.restaurant') }}">Restaurant</a>
             </li>
             <li>
-                <a href="restaurant">Adventure</a>
+                <a href="{{ route('front.restaurant') }}">Adventure</a>
             </li>
             <li>
-                <a href="about">About us</a>
+                <a href="{{ route('front.about') }}">About us</a>
             </li>
             <li>
-                <a href="news">News</a>
+                <a href="{{ route('front.blog') }}">Blogs</a>
             </li>
             <li>
-                <a href="contact">Contact</a>
+                <a href="{{ route('front.contact') }}">Contact</a>
             </li>
             <li>
                 <a href="#"><span>Book now</span></a>
