@@ -13,6 +13,8 @@ class Adventure extends Model
 {
     use HasFactory, Sluggable, SoftDeletes, Loggable;
 
+    protected $uploadPath = 'uploads/adventure';
+
     protected $fillable = [
         'title',
         'slug',
@@ -36,8 +38,7 @@ class Adventure extends Model
     public function getFilePathAttribute()
     {
         if (!empty($this->image)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath);
-            return getFilePath($uploadPath, $this->image);
+            return getFilePath($this->uploadPath, $this->image);
         }
         return [];
     }

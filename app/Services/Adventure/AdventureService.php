@@ -4,11 +4,14 @@ namespace App\Services\Adventure;
 
 use App\Http\Resources\Adventure\AdventureResource;
 use App\Models\Adventure\Adventure;
+use App\Services\Image\ImageService;
 use Exception;
 
-class AdventureService
+class AdventureService extends ImageService
 {
     protected $adventure;
+
+    protected $uploadPath = 'adventure';
 
     public function __construct(Adventure $adventure)
     {
@@ -45,35 +48,41 @@ class AdventureService
 
     public function store($data)
     {
-        try{
+        try {
+            if (isset($data['image_file']) && $data['image_file']) {
+                $gallery['image'] = $this->uploadFile($data['image_file'], 'adventure/gallery');
+            }
             return $this->adventure->create($data);
-        }
-        catch(Exception $e)
-        {
+        } catch (Exception $e) {
             return false;
         }
     }
 
     public function update($data, $id)
     {
-        try{
+        try {
             $adventure = $this->find($id);
+            if (isset($data['image_file']) && $data['image_file']) {
+                if (!empty($adventure->image)) {
+                    $this->deleteUploaded($adventure->image, 'event/adventure');
+                }
+                $gallery['image'] = $this->uploadFile($data['image_file'], 'adventure/gallery');
+            }
             return $adventure->update($data);
-        }
-        catch(Exception $e)
-        {
+        } catch (Exception $e) {
             return false;
         }
     }
 
     public function delete($id)
     {
-        try{
+        try {
             $adventure = $this->find($id);
+            if (!empty($adventure->image)) {
+                $this->deleteUploaded($adventure->image, 'event/adventure');
+            }
             return $adventure->delete($id);
-        }
-        catch(Exception $e)
-        {
+        } catch (Exception $e) {
             return false;
         }
     }
