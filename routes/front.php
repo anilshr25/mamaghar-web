@@ -3,13 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 $router->get('/',[\App\Http\Controllers\Front\Index\IndexController::class,'index'])->name('front.index');
-$router->get('/room',[\App\Http\Controllers\Front\Index\IndexController::class,'room'])->name('front.room');
-$router->get('/room/{slug}',[\App\Http\Controllers\Front\Index\IndexController::class,'roomDetails'])->name('front.roomdetail');
-$router->get('/restaurant',[\App\Http\Controllers\Front\Index\IndexController::class,'restaurant'])->name('front.restaurant');
-$router->get('/news',[\App\Http\Controllers\Front\Index\IndexController::class,'blog'])->name('front.blog');
-$router->get('/contact',[\App\Http\Controllers\Front\Index\IndexController::class,'contact'])->name('front.contact');
-$router->get('/about',[\App\Http\Controllers\Front\Index\IndexController::class,'about'])->name('front.about');
-$router->get('/faq',[\App\Http\Controllers\Front\Index\IndexController::class,'faq'])->name('front.faq');
+$router->get('room',[\App\Http\Controllers\Front\Index\IndexController::class,'room'])->name('front.room');
+$router->get('room/{slug}',[\App\Http\Controllers\Front\Index\IndexController::class,'roomDetails'])->name('front.roomdetail');
+$router->get('restaurant',[\App\Http\Controllers\Front\Index\IndexController::class,'restaurant'])->name('front.restaurant');
+$router->get('news',[\App\Http\Controllers\Front\Index\IndexController::class,'blog'])->name('front.blog');
+$router->get('contact',[\App\Http\Controllers\Front\Index\IndexController::class,'contact'])->name('front.contact');
+$router->get('about',[\App\Http\Controllers\Front\Index\IndexController::class,'about'])->name('front.about');
+$router->get('faq',[\App\Http\Controllers\Front\Index\IndexController::class,'faq'])->name('front.faq');
 
 
 Route::group(['prefix' => 'user'], function ($router) {
