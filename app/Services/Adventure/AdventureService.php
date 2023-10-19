@@ -50,7 +50,7 @@ class AdventureService extends ImageService
     {
         try {
             if (isset($data['image_file']) && $data['image_file']) {
-                $gallery['image'] = $this->uploadFile($data['image_file'], 'adventure/gallery');
+                $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath);
             }
             return $this->adventure->create($data);
         } catch (Exception $e) {
