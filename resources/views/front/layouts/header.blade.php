@@ -31,7 +31,7 @@
                 <a href="{{ route('front.restaurant') }}">Restaurant</a>
             </li>
             <li>
-                <a href="{{ route('front.restaurant') }}">Adventure</a>
+                <a href="{{ route('front.adventure') }}">Adventure</a>
             </li>
             <li>
                 <a href="{{ route('front.about') }}">About us</a>

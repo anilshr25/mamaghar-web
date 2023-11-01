@@ -12,8 +12,8 @@
                 <a href="{{ route('front.room') }}">Rooms</a>
                 <a href="{{ route('front.room') }}">Services</a>
                 <a href="{{ route('front.restaurant') }}">Restaurant</a>
-                <a href="{{ route('front.restaurant') }}">Faq</a>
-                <a href="#">Gallery & images</a>
+                <a href="{{ route('front.restaurant') }}">Faq's</a>
+                <a href="{{ route('front.restaurant') }}">Gallery & images</a>
             </div>
             <div class="col-md-5 mt-4 mt-md-0 text-center text-md-left logos-footer">
                 <h6 class="color-white mb-3">about us</h6>

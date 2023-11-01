@@ -10,7 +10,7 @@ $router->get('news',[\App\Http\Controllers\Front\Index\IndexController::class,'b
 $router->get('contact',[\App\Http\Controllers\Front\Index\IndexController::class,'contact'])->name('front.contact');
 $router->get('about',[\App\Http\Controllers\Front\Index\IndexController::class,'about'])->name('front.about');
 $router->get('faq',[\App\Http\Controllers\Front\Index\IndexController::class,'faq'])->name('front.faq');
-
+$router->get('adventure', [\App\Http\Controllers\Front\Index\IndexController::class, 'adventure'])->name('front.adventure');
 
 Route::group(['prefix' => 'user'], function ($router) {
 

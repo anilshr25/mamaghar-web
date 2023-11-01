@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\Index;
 use App\Http\Controllers\Controller;
 use App\Services\Room\RoomService;
 use App\Services\Restaurant\RestaurantService;
+use App\Services\Adventure\AdventureService;
 use App\Services\Cms\Blog\BlogService;
 use App\Services\SiteSetting\SiteSettingService;
 use App\Services\Cms\Slider\SliderService;
@@ -23,11 +24,13 @@ class IndexController extends Controller
     protected $setting;
     protected $slider;
     protected $faq;
+    protected $adventure;
 
     public function __construct(
         RoomService $room,
         RoomCategoryService $roomCategory,
         RestaurantService $restaurant,
+        AdventureService $adventure,
         BlogService $blog,
         SiteSettingService $setting,
         SliderService $slider,
@@ -39,6 +42,7 @@ class IndexController extends Controller
         $this->room = $room;
         $this->roomCategory = $roomCategory;
         $this->restaurant = $restaurant;
+        $this->adventure = $adventure;
         $this->blog = $blog;
         $this->setting = $setting;
         $this->slider = $slider;
@@ -73,6 +77,12 @@ class IndexController extends Controller
         return view('front.restaurant.restaurant', compact('restaurants'));
     }
 
+    public function adventure (){
+        $adventures = $this->adventure->getAllActive();
+        return view('front.adventure.adventure', compact('adventures'));
+
+    }
+
 
     public function faq()
     {
@@ -93,5 +103,6 @@ class IndexController extends Controller
 
         return view('front.about.about');
     }
+
 
 }

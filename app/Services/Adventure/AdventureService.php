@@ -58,6 +58,12 @@ class AdventureService extends ImageService
         }
     }
 
+    public function getAllActive(){
+        $adventure = $this->adventure->whereIsActive(1)->get();
+        return AdventureResource::collection($adventure);
+    }
+
+
     public function update($data, $id)
     {
         try {
