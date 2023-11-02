@@ -19,7 +19,7 @@ class AdventureResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'image' => $this->image,
-            'file_path' => $this->file_path,
+            'image_path' => $this->image_path,
             'category_id' => $this->category_id,
             'category' => $this->category->title ?? null,
             'description' => $this->description,
