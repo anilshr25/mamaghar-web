@@ -56,6 +56,11 @@ class ServiceService extends ImageService
     public function store($data)
     {
         try {
+            if(isset($data['is_feature']) && $data['is_feature'] == true) {
+                $data['is_feature'] = 1;
+            } else {
+                $data['is_feature'] = 0;
+            }
             if (!empty($data['image_file'])) {
                 $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $data['title']);
             }
@@ -69,6 +74,11 @@ class ServiceService extends ImageService
     {
         try {
             $service = $this->find($id);
+            if(isset($data['is_feature']) && $data['is_feature'] == true) {
+                $data['is_feature'] = 1;
+            } else {
+                $data['is_feature'] = 0;
+            }
             if (!empty($data['image_file'])) {
                 if (!empty($service->image)) {
                     $this->deleteUploaded($service->image, $this->uploadPath, $service->title);
