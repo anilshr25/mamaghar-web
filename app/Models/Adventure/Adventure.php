@@ -3,6 +3,7 @@
 namespace App\Models\Adventure;
 
 use App\Models\Adventure\Category\AdventureCategory;
+use App\Services\Traits\UploadPathTrait;
 use App\Services\Traits\Loggable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,9 +12,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Adventure extends Model
 {
-    use HasFactory, Sluggable, SoftDeletes, Loggable;
+    use HasFactory, Sluggable, SoftDeletes, Loggable, UploadPathTrait;
 
-    protected $uploadPath = 'uploads/adventure';
+    protected $uploadPath = 'adventure';
 
     protected $fillable = [
         'title',
@@ -33,14 +34,17 @@ class Adventure extends Model
         ];
     }
 
-    protected $appends = ['file_path'];
+    protected $appends = ['image_path'];
 
-    public function getFilePathAttribute()
+    public function getImagePathAttribute()
     {
         if (!empty($this->image)) {
-            return getFilePath($this->uploadPath, $this->image);
+            $uploadPath = $this->getUploadPath($this->uploadPath, $this->title);
+            return [
+                "original" => asset($uploadPath . '/' . $this->image),
+                "thumb" => asset($uploadPath . '/thumb/' . $this->image)
+            ];
         }
-        return [];
     }
 
     public function category()

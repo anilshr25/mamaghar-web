@@ -5,10 +5,13 @@ namespace App\Services\Adventure;
 use App\Http\Resources\Adventure\AdventureResource;
 use App\Models\Adventure\Adventure;
 use App\Services\Image\ImageService;
+use App\Services\Traits\UploadPathTrait;
 use Exception;
 
 class AdventureService extends ImageService
 {
+
+    use UploadPathTrait;
     protected $adventure;
 
     protected $uploadPath = 'adventure';
@@ -40,20 +43,22 @@ class AdventureService extends ImageService
         return AdventureResource::collection($adventures);
     }
 
-    public function find($id)
+    public function find($id, $resource = true)
     {
         $adventure = $this->adventure->find($id);
-        return new AdventureResource($adventure);
+        return $resource ? new AdventureResource($adventure) : $adventure;
     }
 
     public function store($data)
     {
-        try {
-            if (isset($data['image_file']) && $data['image_file']) {
-                $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath);
+        try{
+            if (!empty($data['image_file'])) {
+                $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $data['title']);
             }
             return $this->adventure->create($data);
-        } catch (Exception $e) {
+        }
+        catch(Exception $e)
+        {
             return false;
         }
     }
@@ -66,16 +71,18 @@ class AdventureService extends ImageService
 
     public function update($data, $id)
     {
-        try {
+        try{
             $adventure = $this->find($id);
-            if (isset($data['image_file']) && $data['image_file']) {
+            if (!empty($data['image_file'])) {
                 if (!empty($adventure->image)) {
-                    $this->deleteUploaded($adventure->image, 'event/adventure');
+                    $this->deleteUploaded($adventure->image, $this->uploadPath, $adventure->title);
                 }
-                $gallery['image'] = $this->uploadFile($data['image_file'], 'adventure/gallery');
+                $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $adventure->title);
             }
             return $adventure->update($data);
-        } catch (Exception $e) {
+        }
+        catch(Exception $e)
+        {
             return false;
         }
     }
