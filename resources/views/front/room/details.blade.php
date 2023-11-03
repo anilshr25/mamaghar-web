@@ -82,32 +82,8 @@
                             <h5>discription</h5>
                             <p class="mt-3">{!! $room->description !!}</p>
                         </div>
-                        <div class="section pt-4">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5 class="mb-3">Overview</h5>
-                                </div>
-                                <div class="col-lg-6">
-                                    <p><strong class="color-black">Room size:</strong> 47 - 54 sq m</p>
-                                    <p><strong class="color-black">Occupancy:</strong> Up to 4 adulds</p>
-                                    <p><strong class="color-black">View:</strong> Sea view</p>
-                                    <p><strong class="color-black">Smoking:</strong> No smoking</p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <p><strong class="color-black">Bed size:</strong> King and regular</p>
-                                    <p><strong class="color-black">Location:</strong> Big room 2nd floor</p>
-                                    <p><strong class="color-black">Room service:</strong> Yes</p>
-                                    <p><strong class="color-black">Swimming pool:</strong> Yes</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="section pt-4">
-                            <h5>Features</h5>
-                            <p class="mt-3">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-                                aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                                corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
-                        </div>
+
+
                     </div>
                     <div class="col-lg-4 order-first order-lg-last">
                         <div class="section background-dark p-4">
