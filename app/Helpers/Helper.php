@@ -271,6 +271,20 @@ function getBadgeByStatus($actualStatus)
     }
 }
 
+function getBadgeByFeature($actualStatus)
+{
+    switch ($actualStatus) {
+        case '1':
+            return '<span class="text-center badge badge-success rounded text-white">Yes</span>';
+
+        case '0':
+            return '<span class="text-center badge badge-danger rounded text-white">No</span>';
+
+        default:
+            return '<span class="text-center badge badge-danger rounded text-black">No</span>';
+    }
+}
+
 function getSiteSetting()
 {
     $siteSetting = SiteSetting::first();
