@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Service extends Model
 {
     use HasFactory, Sluggable, SoftDeletes, UploadPathTrait;
-    protected $uploadPath = "room";
+    protected $uploadPath = "service";
 
     protected $fillable = [
         'title',
