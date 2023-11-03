@@ -23,7 +23,7 @@ class AdventureResource extends JsonResource
             'category_id' => $this->category_id,
             'category' => $this->category->title ?? null,
             'description' => $this->description,
-            'is_active' => $this->is_active,
+            'is_active' => $this->is_active ? true : false,
             'status' => getBadgeByStatus($this->is_active),
         ];
 
