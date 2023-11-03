@@ -21,7 +21,7 @@ class ServiceResource extends JsonResource
             'image_path' => $this->image_path,
             'short_description' => $this->description,
             'is_feature' => $this->is_feature,
-            'is_feature' => getBadgeByStatus($this->is_feature),
+            'feature_status' => getBadgeByStatus($this->is_feature),
             'is_active' => $this->is_active ? true : false,
             'status' => getBadgeByStatus($this->is_active),
         ];
