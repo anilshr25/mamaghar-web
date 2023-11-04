@@ -2,7 +2,6 @@
 
 namespace App\Models\Cms\Popup;
 
-use App\Services\Traits\UploadPathTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Popup extends Model
 {
-    use HasFactory, Sluggable, SoftDeletes, UploadPathTrait;
+    use HasFactory, Sluggable, SoftDeletes;
 
     protected $uploadPath = 'popup';
 
@@ -41,7 +40,7 @@ class Popup extends Model
     public function getFilePathAttribute()
     {
         if (!empty($this->file)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath, $this->title);
+            $uploadPath = getUploadPath($this->uploadPath, $this->title);
             return getFilePath($uploadPath, $this->file);
         }
         return [];

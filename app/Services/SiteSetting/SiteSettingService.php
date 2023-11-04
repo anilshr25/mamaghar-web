@@ -122,18 +122,17 @@ class SiteSettingService extends ImageService
 
     public function testAwsUpload($file)
     {
-        $uploadPath = 'uploads/test';
-        $data = $this->uploadFile($file, null, null, $uploadPath);
+        $uploadPath = 'site-setting';
+        $data = $this->uploadFile($file, $uploadPath);
+        $uploadPath = getUploadPath($uploadPath);
         $path = $uploadPath . "/" . $data;
-        if (env('APP_ENV') != "production")
-            $path = "local/" . $path;
-        $url = s3_image_url($path);
+        $url = s3_image_url($path, true);
         return $url;
     }
 
     public function sendTestEmail($email)
     {
-        setSMTP();
+        // setSMTP();
         Mail::to($email)->send(new SMTPTestEmail());
         return true;
     }

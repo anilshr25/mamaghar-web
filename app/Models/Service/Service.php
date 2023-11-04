@@ -2,7 +2,6 @@
 
 namespace App\Models\Service;
 
-use App\Services\Traits\UploadPathTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Service extends Model
 {
-    use HasFactory, Sluggable, SoftDeletes, UploadPathTrait;
+    use HasFactory, Sluggable, SoftDeletes;
     protected $uploadPath = "service";
 
     protected $fillable = [
@@ -40,7 +39,7 @@ class Service extends Model
     public function getImagePathAttribute()
     {
         if (!empty($this->image)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath, $this->title);
+            $uploadPath = getUploadPath($this->uploadPath, $this->title);
             return [
                 "original" => asset($uploadPath . '/' . $this->image),
                 "thumb" => asset($uploadPath . '/thumb/' . $this->image)

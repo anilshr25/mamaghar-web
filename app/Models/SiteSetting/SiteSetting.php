@@ -3,15 +3,13 @@
 namespace App\Models\SiteSetting;
 
 use App\Services\Traits\Loggable;
-use App\Services\Traits\UploadPathTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SiteSetting extends Model
 {
-    use HasFactory, SoftDeletes, Loggable, UploadPathTrait;
-
+    use HasFactory, SoftDeletes, Loggable;
 
     protected $fillable = [
         'phone',
@@ -86,7 +84,7 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->fav_icon)) {
-            $uploadPath = $this->getUploadPath('setting/fav-icon');
+            $uploadPath = getUploadPath('setting/fav-icon');
             $imagePath = getFilePath($uploadPath, $this->fav_icon);
         }
         return $imagePath;
@@ -96,7 +94,7 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->logo)) {
-            $uploadPath = $this->getUploadPath('setting/logo');
+            $uploadPath = getUploadPath('setting/logo');
             $imagePath = getFilePath($uploadPath, $this->logo);
         }
         return $imagePath;
@@ -106,7 +104,7 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->email_logo_image)) {
-            $uploadPath = $this->getUploadPath('setting/email-logo');
+            $uploadPath = getUploadPath('setting/email-logo');
             $imagePath = getFilePath($uploadPath, $this->email_logo_image);
         }
         return $imagePath;
@@ -116,7 +114,7 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->footer_logo)) {
-            $uploadPath = $this->getUploadPath('setting/footer-logo');
+            $uploadPath = getUploadPath('setting/footer-logo');
             $imagePath = getFilePath($uploadPath, $this->footer_logo);
         }
         return $imagePath;
@@ -126,7 +124,7 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->app_logo)) {
-            $uploadPath = $this->getUploadPath('setting/app-logo');
+            $uploadPath = getUploadPath('setting/app-logo');
             $imagePath = getFilePath($uploadPath, $this->app_logo);
         }
         return $imagePath;
@@ -137,7 +135,7 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->login_bg_image)) {
-            $uploadPath = $this->getUploadPath('setting/login-image');
+            $uploadPath = getUploadPath('setting/login-image');
             $imagePath = getFilePath($uploadPath, $this->login_bg_image);
         }
         return $imagePath;

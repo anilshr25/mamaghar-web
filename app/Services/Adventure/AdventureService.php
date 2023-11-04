@@ -5,13 +5,11 @@ namespace App\Services\Adventure;
 use App\Http\Resources\Adventure\AdventureResource;
 use App\Models\Adventure\Adventure;
 use App\Services\Image\ImageService;
-use App\Services\Traits\UploadPathTrait;
 use Exception;
 
 class AdventureService extends ImageService
 {
 
-    use UploadPathTrait;
     protected $adventure;
 
     protected $uploadPath = 'adventure';

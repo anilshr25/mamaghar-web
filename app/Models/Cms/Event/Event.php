@@ -3,7 +3,6 @@
 namespace App\Models\Cms\Event;
 
 use App\Models\Cms\Event\Gallery\EventGallery;
-use App\Services\Traits\UploadPathTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
-    use HasFactory, Sluggable, SoftDeletes, UploadPathTrait;
+    use HasFactory, Sluggable, SoftDeletes;
 
     protected $uploadPath = 'event';
 
@@ -45,7 +44,7 @@ class Event extends Model
     public function getImagePathAttribute()
     {
         if (!empty($this->image)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath);
+            $uploadPath = getUploadPath($this->uploadPath);
             return getFilePath($uploadPath, $this->image, true);
         }
         return [];

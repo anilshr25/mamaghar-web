@@ -3,6 +3,8 @@
 use App\Models\EmailTemplate\EmailTemplate;
 use App\Models\SiteSetting\SiteSetting;
 use Hashids\Hashids;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -303,12 +305,12 @@ function setStorageConfig()
     $storageType = getStorageType();
 
     if ($storageType == 'wasabi') {
-        config('filesystems.disks.wasabi.driver', "s3");
-        config('filesystems.disks.wasabi.key', $setting->storage_access_key);
-        config('filesystems.disks.wasabi.secret', $setting->storage_secret_key);
-        config('filesystems.disks.wasabi.region', $setting->storage_region);
-        config('filesystems.disks.wasabi.bucket', $setting->storage_bucket_name);
-        config('filesystems.disks.wasabi.endpoint', 'https://s3.' . $setting->storage_region . '.wasabisys.com');
+        Config::set('filesystems.disks.wasabi.driver', "s3");
+        Config::set('filesystems.disks.wasabi.key', $setting->storage_access_key);
+        Config::set('filesystems.disks.wasabi.secret', $setting->storage_secret_key);
+        Config::set('filesystems.disks.wasabi.region', $setting->storage_region);
+        Config::set('filesystems.disks.wasabi.bucket', $setting->storage_bucket_name);
+        Config::set('filesystems.disks.wasabi.endpoint', 'https://s3.' . $setting->storage_region . '.wasabisys.com');
     }
 }
 
@@ -316,26 +318,25 @@ function setSMTP()
 {
     if (config('app.env') != 'local') {
         $setting = getSiteSetting();
-        config('mail.mailers.smtp.driver', $setting->mail_driver);
-        config('mail.mailers.smtp.host', $setting->mail_host);
-        config('mail.mailers.smtp.port', $setting->mail_port);
-        config('mail.mailers.smtp.encryption', $setting->mail_encryption);
-        config('mail.mailers.smtp.username', $setting->mail_user_name);
-        config('mail.mailers.smtp.password', $setting->mail_password);
+        Config::set('mail.mailers.smtp.driver', $setting->mail_driver);
+        Config::set('mail.mailers.smtp.host', $setting->mail_host);
+        Config::set('mail.mailers.smtp.port', $setting->mail_port);
+        Config::set('mail.mailers.smtp.encryption', $setting->mail_encryption);
+        Config::set('mail.mailers.smtp.username', $setting->mail_user_name);
+        Config::set('mail.mailers.smtp.password', $setting->mail_password);
     }
 }
 
-function getFilePath($uploadPath, $fileName, $signed = false)
+function getFilePath($uploadPath, $fileName, $uploadName = null, $signed = false)
 {
-    $storageType =  getStorageType();
+    $uploadPath = getUploadPath($uploadPath, $uploadName);
+    $storageType = getStorageType();
     $filePath = [];
     if (empty($fileName))
         return $filePath;
     if ($storageType && $storageType != 'local') {
         $realPath = $uploadPath . "/" . $fileName;
         $thumbPath = $uploadPath . "/thumb/" . $fileName;
-        $realPath = buildUploadPathUrl($realPath);
-        $thumbPath = buildUploadPathUrl($thumbPath);
         if (checkFileType($fileName) == 'image') {
             $filePath = [
                 "original" => s3_image_url($realPath, $signed),
@@ -361,35 +362,22 @@ function getFilePath($uploadPath, $fileName, $signed = false)
     return $filePath;
 }
 
-function buildUploadPathUrl($path)
-{
-    if (config('app.env') == "production") {
-        return $path;
-    } else {
-        return "local/" . $path;
-    }
-}
-
 function s3_image_url($path, $signed = false)
 {
-    if (config('app.env') == 'local') {
-        $path = 'local/' . $path;
-    } else {
-        setStorageConfig();
-        $storageType =  getStorageType();
-        if ($storageType != 'local') {
-            if ($signed) {
-                $client = \Illuminate\Support\Facades\Storage::disk($storageType)->getClient();
-                $command = $client->getCommand('GetObject', [
-                    'Bucket' => getSiteSetting()->storage_bucket_name,
-                    'Key' => $path
-                ]);
-                $request = $client->createPresignedRequest($command, '+10 minutes');
+    setStorageConfig();
+    $storageType =  getStorageType();
+    if ($storageType != 'local') {
+        if ($signed) {
+            $client = Storage::disk($storageType)->getClient();
+            $command = $client->getCommand('GetObject', [
+                'Bucket' => getSiteSetting()->storage_bucket_name,
+                'Key' => $path
+            ]);
+            $request = $client->createPresignedRequest($command, '+5 minutes');
 
-                return (string)$request->getUri();
-            } else {
-                return \Illuminate\Support\Facades\Storage::disk($storageType)->url($path);
-            }
+            return (string)$request->getUri();
+        } else {
+            return Storage::disk($storageType)->url($path);
         }
     }
 }
@@ -422,4 +410,19 @@ function checkFileType($imageName)
 
         return 'pdf';
     }
+}
+
+function getUploadPath($folder, $name = null)
+{
+    $folderPath = 'uploads/';
+    $name = preg_replace('/[\*\^\#\!\`\~\$\%\{\}\'\:\/\\\_\@\.\;\&\(\)" "]+/', '-', strtolower($name));
+    if($name) {
+        $path = $folderPath . $folder . '/' . $name;
+    } else {
+        $path = $folderPath . $folder;
+    }
+    if (config('app.env') == "local") {
+        return "local/" . $path;
+    }
+    return $path;
 }

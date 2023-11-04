@@ -5,13 +5,10 @@ namespace App\Services\Service;
 use App\Http\Resources\Services\ServiceResource;
 use App\Models\Service\Service;
 use App\Services\Image\ImageService;
-use App\Services\Traits\UploadPathTrait;
 use Exception;
 
 class ServiceService extends ImageService
 {
-    use UploadPathTrait;
-
     protected $service;
     protected $uploadPath = "service";
 

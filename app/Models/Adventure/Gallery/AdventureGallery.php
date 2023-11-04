@@ -6,12 +6,11 @@ use App\Models\Adventure\Adventure;
 use App\Services\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Services\Traits\UploadPathTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AdventureGallery extends Model
 {
-    use HasFactory, SoftDeletes, UploadPathTrait, Loggable;
+    use HasFactory, SoftDeletes, Loggable;
 
     protected $uploadPath = 'adventure/gallery';
 
@@ -28,7 +27,7 @@ class AdventureGallery extends Model
     public function getFilePathAttribute()
     {
         if (!empty($this->file)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath);
+            $uploadPath = getUploadPath($this->uploadPath);
             return getFilePath($uploadPath, $this->file);
         }
         return [];
