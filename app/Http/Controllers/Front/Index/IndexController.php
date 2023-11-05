@@ -59,8 +59,8 @@ class IndexController extends Controller
         $rooms = $this->room->getAllActive();
         $sliders = $this->slider->getFrontSlider();
         $medias = $this->media->all();
-        $service = $this->service->getAllActive();
-        return view('front.index', compact('rooms','sliders', 'medias', 'service'));
+        $services = $this->service->getAllActive();
+        return view('front.index', compact('rooms','sliders', 'medias', 'services'));
     }
     public function room()
     {

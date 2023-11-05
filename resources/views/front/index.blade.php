@@ -251,7 +251,7 @@
                     <h3 class="text-center padding-bottom-small">Special Attraction</h3>
                 </div>
                 <div class="section clearfix"></div>
-                @foreach ($service as $service)
+                @foreach ($services as $service)
                     <div class="col-sm-6 col-lg-4 m-3">
                         <div class="services-box text-center">
 

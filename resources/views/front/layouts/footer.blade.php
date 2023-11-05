@@ -10,7 +10,7 @@
             <div class="col-md-4 text-center text-md-left">
                 <h6 class="color-white mb-3">information</h6>
                 <a href="{{ route('front.room') }}">Rooms</a>
-                <a href="{{ route('front.room') }}">Services</a>
+                <a href="{{ route('front.service') }}">Services</a>
                 <a href="{{ route('front.restaurant') }}">Restaurant</a>
                 <a href="{{ route('front.restaurant') }}">Faq's</a>
                 <a href="{{ route('front.restaurant') }}">Gallery & images</a>
