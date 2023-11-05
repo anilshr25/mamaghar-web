@@ -11,6 +11,7 @@ $router->get('contact',[\App\Http\Controllers\Front\Index\IndexController::class
 $router->get('about',[\App\Http\Controllers\Front\Index\IndexController::class,'about'])->name('front.about');
 $router->get('faq',[\App\Http\Controllers\Front\Index\IndexController::class,'faq'])->name('front.faq');
 $router->get('adventure', [\App\Http\Controllers\Front\Index\IndexController::class, 'adventure'])->name('front.adventure');
+$router->get('service', [\App\Http\Controllers\Front\Index\IndexController::class, 'service'])->name('front.service');
 
 Route::group(['prefix' => 'user'], function ($router) {
 
