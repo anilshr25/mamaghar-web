@@ -28,11 +28,7 @@ class Restaurant extends Model
     public function getImagePathAttribute()
     {
         if (!empty($this->image)) {
-            $uploadPath = getUploadPath($this->uploadPath, $this->title);
-            return [
-                "original" => asset($uploadPath . '/' . $this->image),
-                "thumb" => asset($uploadPath . '/thumb/' . $this->image)
-            ];
+            return getFilePath($this->uploadPath, $this->image, $this->title);
         }
     }
     public function category()

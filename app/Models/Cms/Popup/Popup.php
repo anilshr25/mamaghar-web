@@ -40,9 +40,8 @@ class Popup extends Model
     public function getFilePathAttribute()
     {
         if (!empty($this->file)) {
-            $uploadPath = getUploadPath($this->uploadPath, $this->title);
-            return getFilePath($uploadPath, $this->file);
+            return getFilePath($this->uploadPath, $this->image, $this->title);
         }
-        return [];
+
     }
 }

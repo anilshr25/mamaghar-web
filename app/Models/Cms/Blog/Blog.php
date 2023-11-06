@@ -46,8 +46,7 @@ class Blog extends Model
     public function getAuthorImagePathAttribute()
     {
         if (!empty($this->author_image)) {
-            $uploadPath = getUploadPath($this->uploadPath, $this->title);
-            return getFilePath($uploadPath, $this->author_image);
+            return getFilePath($this->uploadPath, $this->author_image, $this->title);
         }
     }
 

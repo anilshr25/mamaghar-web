@@ -43,8 +43,7 @@ class Slider extends Model
     public function getImagePathAttribute()
     {
         if (!empty($this->image)) {
-            $uploadPath = getUploadPath($this->uploadPath, $this->title);
-            return getFilePath($uploadPath, $this->image, true);
+            return getFilePath($this->uploadPath, $this->image, $this->title, true);
         }
     }
 }

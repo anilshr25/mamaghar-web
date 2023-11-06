@@ -327,7 +327,7 @@ function setSMTP()
     }
 }
 
-function getFilePath($uploadPath, $fileName, $uploadName = null, $signed = false)
+function getFilePath($uploadPath, $fileName, $uploadName = null, $signed = true)
 {
     $uploadPath = getUploadPath($uploadPath, $uploadName);
     $storageType = getStorageType();
