@@ -252,7 +252,7 @@
                 </div>
                 <div class="section clearfix"></div>
                 @foreach ($services as $service)
-                    <div class="col-sm-6 col-lg-4 m-3">
+                    <div class="col-sm-6 col-lg-4 mt-3">
                         <div class="services-box text-center">
 
                             @if ($service && $service->image_path)
@@ -264,6 +264,8 @@
                             <p class="mt-3">{!! Str::limit($service->short_description, 100, '...') !!}</p>
                             <a class="mt-1 btn btn-primary" href="services.html">read more</a>
                         </div>
+
+
                     </div>
                 @endforeach
 
