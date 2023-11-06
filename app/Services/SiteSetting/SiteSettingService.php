@@ -132,7 +132,6 @@ class SiteSettingService extends ImageService
 
     public function sendTestEmail($email)
     {
-        // setSMTP();
         Mail::to($email)->send(new SMTPTestEmail());
         return true;
     }
