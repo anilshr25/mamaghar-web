@@ -30,7 +30,7 @@
                 <div class="section clearfix"></div>
 
                 @foreach ($services as $service)
-                    <div class="col-sm-6 col-lg-4">
+                    <div class="col-sm-6 col-lg-4 mt-3">
                         <div class="services-box text-center">
 
                             @if ($service && $service->image_path)
@@ -39,9 +39,11 @@
                                 <img src="{{ asset('front_assets/img/room3.jpg') }}" alt="{{ $service['title'] }}">
                             @endif
                             <h5 class="mt-2">{{ $service['title'] }}</h5>
-                            <p class="mt-3">{!! Str::limit($service->description, 100, '...') !!}</p>
+                            <p class="mt-3">{!! Str::limit($service->short_description, 100, '...') !!}</p>
                             <a class="mt-1 btn btn-primary" href="services.html">read more</a>
                         </div>
+
+
                     </div>
                 @endforeach
             </div>
