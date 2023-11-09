@@ -2,24 +2,24 @@
 
 namespace App\Services\Image;
 
+use App\Services\Traits\AmazonS3;
 use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Http\File;
 use Intervention\Image\Facades\Image;
-use App\Services\Traits\UploadPathTrait;
 use Illuminate\Support\Facades\File as FacadesFile;
 
 abstract class ImageService
 {
-    use UploadPathTrait;
+    use AmazonS3;
 
     protected $uploadPath, $images;
 
-    public function uploadFile($file, $uploadFor, $uploadName = null, $width = 320, $height = 320)
+    public function uploadFile($file, $uploadFor, $uploadName = null, $visibility = 'public', $width = 320, $height = 320)
     {
         if (isset($file) && !empty($file)) {
-            $uploadPath = $this->getUploadPath($uploadFor, $uploadName);
-            $imageName = $this->uploadFileAndImages($file, $uploadPath, $width, $height);
+            $uploadPath = getUploadPath($uploadFor, $uploadName);
+            $imageName = $this->uploadFileAndImages($file, $uploadPath, $visibility, $width, $height);
             return $imageName;
         }
     }
@@ -27,7 +27,7 @@ abstract class ImageService
     public function renameFile($uploadFor, $name, $newName)
     {
         try {
-            $uploadPath = $this->getUploadPath($uploadFor, $name);
+            $uploadPath = getUploadPath($uploadFor, $name);
             $pattern = "/" . $name . "/";
             $newPath = preg_replace($pattern, $newName, $uploadPath);
             rename(public_path($uploadPath), public_path($newPath));
@@ -40,7 +40,7 @@ abstract class ImageService
     public function deleteUploaded($fileName, $uploadFor, $uploadName = null, $delete = false)
     {
         try {
-            $uploadPath = $this->getUploadPath($uploadFor, $uploadName);
+            $uploadPath = getUploadPath($uploadFor, $uploadName);
             $imageFullPath = $uploadPath . '/' . $fileName;
             $imageThumbFullPath = $uploadPath . '/thumb/' . $fileName;
             if (is_file($imageFullPath))
@@ -56,24 +56,43 @@ abstract class ImageService
         }
     }
 
-    public function uploadFileAndImages(UploadedFile $file, $uploadPath, $width = 320, $height = 320)
+    public function uploadFileAndImages(UploadedFile $file, $uploadPath, $visibility, $width = 320, $height = 320)
     {
-        $fileName = $file->hashName();
-        $file_type = $file->extension();
-        $newFileName = sprintf("%s.%s", (sha1($fileName) . time()), $file_type);
+        $imageType = ['jpeg', 'jpg', 'png', 'JPEG', 'JPG'];
+
         if (!is_dir($uploadPath)) {
             mkdir($uploadPath, 0775, true);
         }
 
-        if ($file->isValid()) {
-            $file->move($uploadPath, $newFileName);
-            $image = new File($uploadPath . '/' . $newFileName);
-            if (substr($file->getClientMimeType(), 0, 5) == 'image' && $file_type != "ico") {
-                $this->createThumb($image, $width, $height);
+        $isImage = true;
+        $fileName = $file->hashName();
+        $file_type = $file->extension();
+        $newFileName = sprintf("%s.%s", (sha1($fileName) . time()), $file_type);
+
+        if (!empty($fName))
+            $newFileName = $fName . "." . $file_type;
+        if (!in_array($file_type, $imageType)) {
+            $isImage = false;
+        }
+
+        if ($isImage) {
+            if ($file->isValid()) {
+                $file->move($uploadPath, $newFileName);
+                $image = new File($uploadPath . '/' . $newFileName);
+                if (substr($file->getClientMimeType(), 0, 5) == 'image') {
+                    $this->createThumb($image, $width, $height);
+                }
+
+                if (getStorageType() != 'local') {
+                    $this->uploadToS3($uploadPath, $newFileName, $isImage, $visibility);
+                }
+                return $newFileName;
             }
-            return $newFileName;
         } else {
             $file->move($uploadPath, $newFileName);
+            if (getStorageType() != 'local') {
+                $this->uploadToS3($uploadPath, $newFileName, $isImage, $visibility);
+            }
             return $newFileName;
         }
         return null;

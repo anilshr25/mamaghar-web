@@ -5,12 +5,10 @@ namespace App\Services\Room;
 use App\Http\Resources\Room\RoomResource;
 use App\Models\Room\Room;
 use App\Services\Image\ImageService;
-use App\Services\Traits\UploadPathTrait;
 use Exception;
 
 class RoomService extends ImageService
 {
-    use UploadPathTrait;
 
     protected $room;
     protected $uploadPath = "room";

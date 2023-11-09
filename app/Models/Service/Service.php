@@ -1,30 +1,27 @@
 <?php
 
-namespace App\Models\Cms\Event;
+namespace App\Models\Service;
 
-use App\Models\Cms\Event\Gallery\EventGallery;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Event extends Model
+class Service extends Model
 {
     use HasFactory, Sluggable, SoftDeletes;
-
-    protected $uploadPath = 'event';
+    protected $uploadPath = "service";
 
     protected $fillable = [
         'title',
         'slug',
-        'description',
         'image',
-        'location',
-        'start_date',
-        'end_date',
-        'event_time',
-        'is_active'
+        'short_description',
+        'is_feature',
+        'is_active',
     ];
+
+    protected $appends = ['image_path'];
 
     public function sluggable(): array
 
@@ -39,19 +36,11 @@ class Event extends Model
         ];
     }
 
-    protected $appends = ['image_path'];
-
     public function getImagePathAttribute()
     {
         if (!empty($this->image)) {
-            $uploadPath = getUploadPath($this->uploadPath);
-            return getFilePath($uploadPath, $this->image, true);
-        }
-        return [];
-    }
+            return getFilePath($this->uploadPath, $this->image, $this->title);
 
-    public function event_galleries()
-    {
-        return $this->hasMany(EventGallery::class, 'event_id');
+        }
     }
 }

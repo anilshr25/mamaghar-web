@@ -35,7 +35,7 @@ class SiteSettingController extends Controller
 
     public function testAwsUpload(Request $request)
     {
-        $file = $request->file('file');
+        $file = $request->file('image');
         $response = $this->setting->testAwsUpload($file);
         if ($response)
             return response(['status' => "OK", 'path' => $response], 200);

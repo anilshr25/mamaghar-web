@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('room_galleries', function (Blueprint $table) {
-            $table->boolean('is_feature_image')->default(0)->after('type');
+        Schema::table('adventures', function (Blueprint $table) {
+            $table->string('image')->nullable()->after('category_id');
         });
     }
 
@@ -23,8 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('room_galleries', function (Blueprint $table) {
-            $table->dropColumn(['is_feature_image']);
+        Schema::table('adventures', function (Blueprint $table) {
+            $table->dropColumn(['image']);
         });
     }
 };

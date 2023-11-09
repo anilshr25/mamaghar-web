@@ -251,60 +251,24 @@
                     <h3 class="text-center padding-bottom-small">Special Attraction</h3>
                 </div>
                 <div class="section clearfix"></div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="services-box text-center">
-                        <img src="{{ asset('front_assets/img/1.svg') }}" alt="">
-                        <h5 class="mt-2">Poolside Sitting Area</h5>
-                        <p class="mt-3">Relax by our pristine poolside sitting area, perfect for unwinding after a day of
-                            exploration.</p>
-                        <a class="mt-1 btn btn-primary" href="services.html">read more</a>
+                @foreach ($services as $service)
+                    <div class="col-sm-6 col-lg-4 mt-3">
+                        <div class="services-box text-center">
+
+                            @if ($service && $service->image_path)
+                                <img src="{{ $service->image_path['original'] }}" alt="{{ $service['title'] }}">
+                            @else
+                                <img src="{{ asset('front_assets/img/room3.jpg') }}" alt="{{ $service['title'] }}">
+                            @endif
+                            <h5 class="mt-2">{{ $service['title'] }}</h5>
+                            <p class="mt-3">{!! Str::limit($service->short_description, 100, '...') !!}</p>
+                            <a class="mt-1 btn btn-primary" href="services.html">read more</a>
+                        </div>
+
+
                     </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 mt-5 mt-sm-0">
-                    <div class="services-box text-center">
-                        <img src="{{ asset('front_assets/img/2.svg') }}" alt="">
-                        <h5 class="mt-2">Terrace Sitting Area</h5>
-                        <p class="mt-3">Enjoy the scenic beauty from our terrace sitting area, ideal for a peaceful
-                            evening.</p>
-                        <a class="mt-1 btn btn-primary" href="services.html">read more</a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 mt-5 mt-lg-0">
-                    <div class="services-box text-center">
-                        <img src="{{ asset('front_assets/img/3.svg') }}" alt="">
-                        <h5 class="mt-2">Garden Sitting Area</h5>
-                        <p class="mt-3">Immerse yourself in nature at our garden sitting area, surrounded by blooming
-                            flowers and lush greenery.</p>
-                        <a class="mt-1 btn btn-primary" href="services.html">read more</a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 mt-5">
-                    <div class="services-box text-center">
-                        <img src="{{ asset('front_assets/img/4.svg') }}" alt="">
-                        <h5 class="mt-2">Private Nest Area</h5>
-                        <p class="mt-3">Experience ultimate privacy in our exclusive private nest area, designed for a
-                            cozy and intimate stay.</p>
-                        <a class="mt-1 btn btn-primary" href="services.html">read more</a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 mt-5">
-                    <div class="services-box text-center">
-                        <img src="{{ asset('front_assets/img/5.svg') }}" alt="">
-                        <h5 class="mt-2">Typical Newari Siting Area</h5>
-                        <p class="mt-3">Immerse yourself in the rich cultural heritage of Nepal at our typical Newari
-                            sitting area, adorned with traditional decor.</p>
-                        <a class="mt-1 btn btn-primary" href="services.html">read more</a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 mt-5">
-                    <div class="services-box text-center">
-                        <img src="{{ asset('front_assets/img/6.svg') }}" alt="">
-                        <h5 class="mt-2">Party / Seminar Halll</h5>
-                        <p class="mt-3">Host your events in style at our versatile party and seminar hall, equipped with
-                            modern amenities.</p>
-                        <a class="mt-1 btn btn-primary" href="services.html">read more</a>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
@@ -559,19 +523,19 @@
     </div>
 
     @if ($medias)
-    <div class="section">
-        <div id="owl-sep-2" class="owl-carousel owl-theme">
-           @foreach ($medias as $item)
-           <div class="item">
-            <a href="{{ $item->image_path['original'] }}" data-fancybox="gallery">
-                <div class="img-wrap gallery-small">
-                    <img src="{{ $item->image_path['thumb'] }}" alt="{{ $item->type }}">
-                </div>
-            </a>
+        <div class="section">
+            <div id="owl-sep-2" class="owl-carousel owl-theme">
+                @foreach ($medias as $item)
+                    <div class="item">
+                        <a href="{{ $item->image_path['original'] }}" data-fancybox="gallery">
+                            <div class="img-wrap gallery-small">
+                                <img src="{{ $item->image_path['thumb'] }}" alt="{{ $item->type }}">
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
         </div>
-           @endforeach
-        </div>
-    </div>
     @endif
 
 @endsection

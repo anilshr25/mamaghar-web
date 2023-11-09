@@ -2,7 +2,6 @@
 
 namespace App\Models\Cms\Slider;
 
-use App\Services\Traits\UploadPathTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Slider extends Model
 {
-    use HasFactory, Sluggable, SoftDeletes, UploadPathTrait;
+    use HasFactory, Sluggable, SoftDeletes;
 
     protected $uploadPath = "slider";
 
@@ -44,8 +43,7 @@ class Slider extends Model
     public function getImagePathAttribute()
     {
         if (!empty($this->image)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath, $this->title);
-            return getFilePath($uploadPath, $this->image, true);
+            return getFilePath($this->uploadPath, $this->image, $this->title, true);
         }
     }
 }

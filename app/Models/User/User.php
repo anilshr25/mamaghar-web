@@ -7,7 +7,6 @@ use App\Models\DiscountGroup\DiscountGroup;
 use App\Models\User\CategoryBrandDiscount\UserCategoryBrandDiscount;
 use App\Models\User\Setting\UserSetting;
 use App\Services\Traits\Loggable;
-use App\Services\Traits\UploadPathTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +14,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, SoftDeletes, Notifiable, UploadPathTrait, Loggable;
+    use HasFactory, SoftDeletes, Notifiable, Loggable;
 
     /**
      * The attributes that are mass assignable.
@@ -92,7 +91,7 @@ class User extends Authenticatable
     public function getImagePathAttribute()
     {
         if (!empty($this->image)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath, $this->unique_identifier);
+            $uploadPath = getUploadPath($this->uploadPath, $this->unique_identifier);
             return [
                 "original" => asset($uploadPath . '/' . $this->image),
                 "thumb" => asset($uploadPath . '/thumb/' . $this->image)

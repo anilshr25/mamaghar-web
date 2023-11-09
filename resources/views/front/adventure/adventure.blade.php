@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 parallax-fade-top">
-                        <div class="hero-text">Restaurant</div>
+                        <div class="hero-text">Adventure</div>
                     </div>
                 </div>
             </div>
@@ -25,23 +25,23 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 align-self-center">
-                    <div class="subtitle with-line text-center mb-4">main dishes</div>
-                    <h3 class="text-center padding-bottom-small">Our menu</h3>
+                    <div class="subtitle with-line text-center mb-4">Thrilling</div>
+                    <h3 class="text-center padding-bottom-small">Adventure</h3>
                 </div>
                 <div class="section clearfix"></div>
-                @foreach ($restaurants as $restaurant)
+                @foreach ($adventures as $adventure)
                     <div class="col-md-6 mt-5" data-scroll-reveal="enter bottom move 50px over 0.7s after 0.2s">
                         <div class="restaurant-box">
-                            @if ($restaurant && $restaurant->image_path)
-                                <img src="{{ $restaurant->image_path['original'] }}" alt="{{ $restaurant['title'] }}">
+                            @if ($adventure && $adventure->image_path)
+                                <img src="{{ $adventure->image_path['original'] }}" alt="{{ $adventure['title'] }}">
                             @else
-                                <img src="{{ asset('front_assets/img/room3.jpg') }}" alt="{{ $restaurant['title'] }}">
+                                <img src="{{ asset('front_assets/img/room3.jpg') }}" alt="{{ $adventure['title'] }}">
                             @endif
-                            <h6><span>{{ $restaurant->title }}</span></h6>
-                            @if ($restaurant->category)
-                                <p><span>{{ $restaurant->category->title ?? '' }}</span></p>
+                            <h6><span>{{ $adventure->title }}</span></h6>
+                            @if ($adventure->category)
+                                <p><span>{{ $adventure->category->title ?? '' }}</span></p>
                             @endif
-                            <h5><span>NPR {{ $restaurant->price }}</span></h5>
+
                         </div>
                     </div>
                 @endforeach

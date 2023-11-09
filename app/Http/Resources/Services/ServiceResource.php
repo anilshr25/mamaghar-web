@@ -1,32 +1,30 @@
 <?php
 
-namespace App\Http\Resources\Adventure;
+namespace App\Http\Resources\Services;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AdventureResource extends JsonResource
+class ServiceResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @return array<string, mixed>
+     * @param  \Illuminate\Http\Request  $request
+     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray(Request $request): array
+    public function toArray($request)
     {
         $resource = [
             'id' => $this->id,
             'title' => $this->title,
-            'slug' => $this->slug,
             'image' => $this->image,
             'image_path' => $this->image_path,
-            'category_id' => $this->category_id,
-            'category' => $this->category->title ?? null,
-            'description' => $this->description,
+            'short_description' => $this->short_description,
+            'is_feature' => $this->is_feature,
+            'feature_status' => getBadgeByFeature($this->is_feature),
             'is_active' => $this->is_active ? true : false,
             'status' => getBadgeByStatus($this->is_active),
         ];
-
         return $resource;
     }
 }

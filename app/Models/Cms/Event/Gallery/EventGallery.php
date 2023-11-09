@@ -4,14 +4,13 @@ namespace App\Models\Cms\Event\Gallery;
 
 use App\Models\Cms\Event\Event;
 use App\Services\Traits\Loggable;
-use App\Services\Traits\UploadPathTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EventGallery extends Model
 {
-    use HasFactory, SoftDeletes, UploadPathTrait, Loggable;
+    use HasFactory, SoftDeletes, Loggable;
 
     protected $uploadPath = 'event/gallery';
 
@@ -22,7 +21,7 @@ class EventGallery extends Model
     public function getFilePathAttribute()
     {
         if (!empty($this->file)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath);
+            $uploadPath = getUploadPath($this->uploadPath);
             return getFilePath($uploadPath, $this->file, true);
         }
         return [];

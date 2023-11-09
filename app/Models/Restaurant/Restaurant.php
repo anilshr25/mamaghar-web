@@ -4,14 +4,13 @@ namespace App\Models\Restaurant;
 
 use App\Models\Restaurant\Category\RestaurantCategory;
 use App\Services\Traits\Loggable;
-use App\Services\Traits\UploadPathTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Restaurant extends Model
 {
-    use HasFactory, SoftDeletes, UploadPathTrait, Loggable;
+    use HasFactory, SoftDeletes, Loggable;
 
     protected $uploadPath = "restaurant";
 
@@ -29,11 +28,7 @@ class Restaurant extends Model
     public function getImagePathAttribute()
     {
         if (!empty($this->image)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath, $this->title);
-            return [
-                "original" => asset($uploadPath . '/' . $this->image),
-                "thumb" => asset($uploadPath . '/thumb/' . $this->image)
-            ];
+            return getFilePath($this->uploadPath, $this->image, $this->title);
         }
     }
     public function category()

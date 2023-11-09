@@ -5,13 +5,10 @@ namespace App\Services\Restaurant;
 use App\Http\Resources\Restaurant\RestaurantResource;
 use App\Models\Restaurant\Restaurant;
 use App\Services\Image\ImageService;
-use App\Services\Traits\UploadPathTrait;
 use Exception;
 
 class RestaurantService extends ImageService
 {
-    use UploadPathTrait;
-
     protected $restaurant;
     protected $uploadPath = "restaurant";
 

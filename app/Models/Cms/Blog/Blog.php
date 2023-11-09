@@ -3,7 +3,6 @@
 namespace App\Models\Cms\Blog;
 
 use App\Models\Cms\Blog\Category\BlogCategory;
-use App\Services\Traits\UploadPathTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blog extends Model
 {
-    use HasFactory, Sluggable, SoftDeletes, UploadPathTrait;
+    use HasFactory, Sluggable, SoftDeletes;
 
     protected $uploadPath = 'blog';
 
@@ -47,8 +46,7 @@ class Blog extends Model
     public function getAuthorImagePathAttribute()
     {
         if (!empty($this->author_image)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath, $this->title);
-            return getFilePath($uploadPath, $this->author_image);
+            return getFilePath($this->uploadPath, $this->author_image, $this->title);
         }
     }
 

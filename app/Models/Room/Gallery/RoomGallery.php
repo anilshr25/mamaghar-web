@@ -4,14 +4,13 @@ namespace App\Models\Room\Gallery;
 
 use App\Models\Room\Room;
 use App\Services\Traits\Loggable;
-use App\Services\Traits\UploadPathTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RoomGallery extends Model
 {
-    use HasFactory, SoftDeletes, UploadPathTrait, Loggable;
+    use HasFactory, SoftDeletes, Loggable;
 
     protected $uploadPath = 'room/gallery';
 
@@ -29,7 +28,7 @@ class RoomGallery extends Model
     public function getFilePathAttribute()
     {
         if (!empty($this->file)) {
-            $uploadPath = $this->getUploadPath($this->uploadPath);
+            $uploadPath = getUploadPath($this->uploadPath);
             return getFilePath($uploadPath, $this->file);
         }
         return [];
