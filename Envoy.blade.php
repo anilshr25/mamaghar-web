@@ -28,7 +28,6 @@
 
 @task('update_symlinks')
     echo "Linking storage directory"
-    ln -nfs /mnt/efs/mamaghar/public/uploads {{ $new_release_dir }}/public/
     ln -nfs {{ $app_dir }}/storage/framework/views {{ $new_release_dir }}/storage/framework/views
     ln -nfs {{ $app_dir }}/storage/framework/cache {{ $new_release_dir }}/storage/framework/cache
     ln -nfs {{ $app_dir }}/storage/framework/sessions {{ $new_release_dir }}/storage/framework/sessions
@@ -94,5 +93,7 @@
 @task('deploy_portal')
     echo 'Updating portal'
     cd /var/www/html/mamaghar
+    rm -rf portal
+    mkdir portal
     aws s3 sync s3://mamaghar.com.np/portal portal --delete --endpoint-url=https://s3.ap-southeast-1.wasabisys.com
 @endtask
