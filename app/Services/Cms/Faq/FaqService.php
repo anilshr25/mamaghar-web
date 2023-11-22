@@ -76,38 +76,38 @@ class FaqService
 
     public function store($data)
     {
-        try{
+        // try{
             $data['position'] = $this->faq->orderBy('position','DESC')->first();
             $data['position'] = $data['position'] && $data['position']->position ? $data['position']->position + 1 : 1;
             return $this->faq->create($data);
-        }
-        catch(Exception $e)
-        {
-            return false;
-        }
+        // }
+        // catch(Exception $e)
+        // {
+        //     return false;
+        // }
     }
     public function update($data, $id)
     {
-        try{
+        // try{
             $faq = $this->find($id);
             return $faq->update($data);
-        }
-        catch(Exception $e)
-        {
-            return false;
-        }
+        // }
+        // catch(Exception $e)
+        // {
+        //     return false;
+        // }
     }
 
     public function delete($id)
     {
-        try{
+        // try{
             $faq = $this->find($id);
             $faq->delete($id);
             return true;
-        }
-        catch(Exception $e)
-        {
-            return false;
-        }
+        // }
+        // catch(Exception $e)
+        // {
+        //     return false;
+        // }
     }
 }

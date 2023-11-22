@@ -52,7 +52,7 @@ class ServiceService extends ImageService
 
     public function store($data)
     {
-        try {
+        // try {
             if(isset($data['is_feature']) && $data['is_feature'] == true) {
                 $data['is_feature'] = 1;
             } else {
@@ -62,14 +62,14 @@ class ServiceService extends ImageService
                 $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $data['title']);
             }
             return $this->service->create($data);
-        } catch (Exception $e) {
-            return false;
-        }
+        // } catch (Exception $e) {
+        //     return false;
+        // }
     }
 
     public function update($data, $id)
     {
-        try {
+        // try {
             $service = $this->find($id);
             if(isset($data['is_feature']) && $data['is_feature'] == true) {
                 $data['is_feature'] = 1;
@@ -83,22 +83,22 @@ class ServiceService extends ImageService
                 $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $service->title);
             }
             return $service->update($data);
-        } catch (Exception $e) {
-            return false;
-        }
+        // } catch (Exception $e) {
+        //     return false;
+        // }
     }
 
     public function delete($id)
     {
-        try {
+        // try {
             $service = $this->find($id);
             if (!empty($service->image)) {
                 $this->deleteUploaded($service->image, $this->uploadPath, $service->title);
             }
             return $service->delete($id);
-        } catch (Exception $e) {
-            return false;
-        }
+        // } catch (Exception $e) {
+        //     return false;
+        // }
     }
 
     public function paginateFront($limit = 6){

@@ -49,21 +49,21 @@ class RestaurantService extends ImageService
 
     public function store($data)
     {
-        try{
+        // try{
             if (!empty($data['image_file'])) {
                 $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $data['title']);
             }
             return $this->restaurant->create($data);
-        }
-        catch(Exception $e)
-        {
-            return false;
-        }
+        // }
+        // catch(Exception $e)
+        // {
+        //     return false;
+        // }
     }
 
     public function update($data, $id)
     {
-        try{
+        // try{
             $restaurant = $this->find($id);
             if (!empty($data['image_file'])) {
                 if (!empty($restaurant->image)) {
@@ -72,25 +72,25 @@ class RestaurantService extends ImageService
                 $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $restaurant->title);
             }
             return $restaurant->update($data);
-        }
-        catch(Exception $e)
-        {
-            return false;
-        }
+        // }
+        // catch(Exception $e)
+        // {
+        //     return false;
+        // }
     }
 
     public function delete($id)
     {
-        try{
+        // try{
             $restaurant = $this->find($id);
             if (!empty($restaurant->image)) {
                 $this->deleteUploaded($restaurant->image, $this->uploadPath, $restaurant->title);
             }
             return $restaurant->delete($id);
-        }
-        catch(Exception $e)
-        {
-            return false;
-        }
+        // }
+        // catch(Exception $e)
+        // {
+        //     return false;
+        // }
     }
 }
