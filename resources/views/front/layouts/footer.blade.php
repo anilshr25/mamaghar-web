@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 text-center text-md-left">
-                <img src="{{ getSiteSetting()->footer_logo_path['original'] ?? asset('front_assets/img/logo.png') }}"
+                <img src="{{ getSiteSetting()->footer_logo['original'] ?? asset('front_assets/img/mamaghar_logo.jpeg') }}"
                     alt="">
                 <p class="color-grey mt-4">
                     {{ getSiteSetting()->address ?? 'Kathmandu' }}<br>{{ getSiteSetting()->city ?? 'Kathmandu' }}</p>
@@ -12,13 +12,15 @@
                 <a href="{{ route('front.room') }}">Rooms</a>
                 <a href="{{ route('front.service') }}">Services</a>
                 <a href="{{ route('front.restaurant') }}">Restaurant</a>
-                <a href="{{ route('front.restaurant') }}">Faq's</a>
+                <a href="{{ route('front.faq') }}">Faq's</a>
                 <a href="{{ route('front.restaurant') }}">Gallery & images</a>
             </div>
             <div class="col-md-5 mt-4 mt-md-0 text-center text-md-left logos-footer">
                 <h6 class="color-white mb-3">about us</h6>
-                <p class="color-grey mb-4">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                    praesentium voluptatum deleniti atque corrupti quos dolores.</p>
+                <p class="color-grey mb-4">At our restaurant, we take pride in offering a diverse menu inspired by the
+                    traditions of Newari cuisine, bringing you a delectable array of dishes that capture the essence of
+                    this culinary heritage. From savory delights to sweet temptations, our menu showcases the finest
+                    ingredients and culinary expertise, promising a delightful experience for your palate.</p>
             </div>
         </div>
     </div>
