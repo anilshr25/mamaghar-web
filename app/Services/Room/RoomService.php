@@ -5,7 +5,6 @@ namespace App\Services\Room;
 use App\Http\Resources\Room\RoomResource;
 use App\Models\Room\Room;
 use App\Services\Image\ImageService;
-use Exception;
 
 class RoomService extends ImageService
 {
