@@ -49,16 +49,16 @@ class AdventureService extends ImageService
 
     public function store($data)
     {
-        try{
+        // try{
             if (!empty($data['image_file'])) {
                 $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $data['title']);
             }
             return $this->adventure->create($data);
-        }
-        catch(Exception $e)
-        {
-            return false;
-        }
+        // }
+        // catch(Exception $e)
+        // {
+        //     return false;
+        // }
     }
 
     public function getAllActive(){
@@ -69,7 +69,7 @@ class AdventureService extends ImageService
 
     public function update($data, $id)
     {
-        try{
+        // try{
             $adventure = $this->find($id);
             if (!empty($data['image_file'])) {
                 if (!empty($adventure->image)) {
@@ -78,23 +78,23 @@ class AdventureService extends ImageService
                 $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $adventure->title);
             }
             return $adventure->update($data);
-        }
-        catch(Exception $e)
-        {
-            return false;
-        }
+        // }
+        // catch(Exception $e)
+        // {
+        //     return false;
+        // }
     }
 
     public function delete($id)
     {
-        try {
+        // try {
             $adventure = $this->find($id);
             if (!empty($adventure->image)) {
                 $this->deleteUploaded($adventure->image, 'event/adventure');
             }
             return $adventure->delete($id);
-        } catch (Exception $e) {
-            return false;
-        }
+        // } catch (Exception $e) {
+        //     return false;
+        // }
     }
 }
