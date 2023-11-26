@@ -323,27 +323,34 @@
                 <div class="section clearfix"></div>
                 @foreach ($rooms as $room)
                     <div class="col-md-6 mt-5">
-                        <div class="room-box background-white">
-                            <div class="room-name">{{ $room->category->title ?? '' }}</div>
+                        <a href="{{ route('front.roomdetail', ['slug' => $room->slug]) }}"
+                            class="col-md-6 mt-5 card-link">
+                            <div class="room-box background-white">
+                                <div class="room-name">{{ $room->category->title ?? '' }}</div>
 
-                            @if ($room && $room->image_path)
-                                <img src="{{ $room->image_path['original'] }}" alt="{{ $room['title'] }}">
-                            @else
-                                <img src="{{ asset('front_assets/img/room3.jpg') }}" alt="{{ $room['title'] }}">
-                            @endif
-                            <div class="room-box-in">
-                                <h5 class="">{{ $room['title'] }}</h5>
-                                <p class="mt-3">{!! Str::limit($room->description, 100, '...') !!}</p>
-                                <a class="mt-1 btn btn-primary" href="rooms-gallery.html">book from 130$</a>
-                                <div class="room-icons mt-4 pt-4">
-                                    <img src="{{ asset('front_assets/img/5.svg') }}" alt="">
-                                    <img src="{{ asset('front_assets/img/2.svg') }}" alt="">
-                                    <img src="{{ asset('front_assets/img/3.svg') }}" alt="">
-                                    <img src="{{ asset('front_assets/img/1.svg') }}" alt="">
-                                    <a href="rooms-gallery.html">full info</a>
+                                @if ($room && $room->image_path)
+                                    <img style="width: 100%; max-height: 300px;"
+                                        src="{{ $room->image_path['original'] }}" alt="{{ $room['title'] }}">
+                                @else
+                                    <img style="width: 100%; max-height: 300px;"
+                                        src="{{ asset('front_assets/img/room3.jpg') }}" alt="{{ $room['title'] }}">
+                                @endif
+
+                                <div class="room-box-in">
+                                    <h5 class="">{{ $room['title'] }}</h5>
+                                    <p class="mt-3">{!! Str::limit($room->description, 100, '...') !!}</p>
+                                    <a class="mt-1 btn btn-primary"
+                                        href="{{ route('front.roomdetail', ['slug' => $room->slug]) }}">book from 130$</a>
+                                    <div class="room-icons mt-4 pt-4">
+                                        <img src="{{ asset('front_assets/img/5.svg') }}" alt="">
+                                        <img src="{{ asset('front_assets/img/2.svg') }}" alt="">
+                                        <img src="{{ asset('front_assets/img/3.svg') }}" alt="">
+                                        <img src="{{ asset('front_assets/img/1.svg') }}" alt="">
+                                        <a href="rooms-gallery.html">full info</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>

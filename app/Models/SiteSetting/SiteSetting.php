@@ -84,8 +84,7 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->fav_icon)) {
-            $uploadPath = getUploadPath('setting/fav-icon');
-            $imagePath = getFilePath($uploadPath, $this->fav_icon);
+            $imagePath = getFilePath('setting/fav-icon', $this->fav_icon);
         }
         return $imagePath;
     }
@@ -94,8 +93,7 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->logo)) {
-            $uploadPath = getUploadPath('setting/logo');
-            $imagePath = getFilePath($uploadPath, $this->logo);
+            $imagePath = getFilePath('setting/logo', $this->logo);
         }
         return $imagePath;
     }
@@ -104,8 +102,8 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->email_logo_image)) {
-            $uploadPath = getUploadPath('setting/email-logo');
-            $imagePath = getFilePath($uploadPath, $this->email_logo_image);
+
+            $imagePath = getFilePath('setting/email-logo', $this->email_logo_image);
         }
         return $imagePath;
     }
@@ -114,8 +112,8 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->footer_logo)) {
-            $uploadPath = getUploadPath('setting/footer-logo');
-            $imagePath = getFilePath($uploadPath, $this->footer_logo);
+
+            $imagePath = getFilePath('setting/footer-logo', $this->footer_logo);
         }
         return $imagePath;
     }
@@ -124,8 +122,7 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->app_logo)) {
-            $uploadPath = getUploadPath('setting/app-logo');
-            $imagePath = getFilePath($uploadPath, $this->app_logo);
+            $imagePath = getFilePath('setting/app-logo', $this->app_logo);
         }
         return $imagePath;
     }
@@ -135,8 +132,8 @@ class SiteSetting extends Model
     {
         $imagePath = [];
         if (!empty($this->login_bg_image)) {
-            $uploadPath = getUploadPath('setting/login-image');
-            $imagePath = getFilePath($uploadPath, $this->login_bg_image);
+
+            $imagePath = getFilePath('setting/login-image', $this->login_bg_image);
         }
         return $imagePath;
     }
