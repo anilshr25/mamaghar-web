@@ -33,9 +33,11 @@
                     <div class="col-md-6 mt-5" data-scroll-reveal="enter bottom move 50px over 0.7s after 0.2s">
                         <div class="restaurant-box">
                             @if ($adventure && $adventure->image_path)
-                                <img src="{{ $adventure->image_path['original'] }}" alt="{{ $adventure['title'] }}">
+                                <img style="width: 100%; max-height: 300px;" src="{{ $adventure->image_path['original'] }}"
+                                    alt="{{ $adventure['title'] }}">
                             @else
-                                <img src="{{ asset('front_assets/img/room3.jpg') }}" alt="{{ $adventure['title'] }}">
+                                <img style="width: 100%; max-height: 300px;" src="{{ asset('front_assets/img/room3.jpg') }}"
+                                    alt="{{ $adventure['title'] }}">
                             @endif
                             <h6><span>{{ $adventure->title }}</span></h6>
                             @if ($adventure->category)
