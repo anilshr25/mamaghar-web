@@ -5,7 +5,6 @@ namespace App\Services\Room;
 use App\Http\Resources\Room\RoomResource;
 use App\Models\Room\Room;
 use App\Services\Image\ImageService;
-use Exception;
 
 class RoomService extends ImageService
 {
@@ -53,19 +52,19 @@ class RoomService extends ImageService
 
     public function store($data)
     {
-        try {
+        // try {
             if (!empty($data['image_file'])) {
                 $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $data['title']);
             }
             return $this->room->create($data);
-        } catch (Exception $e) {
-            return false;
-        }
+        // } catch (Exception $e) {
+        //     return false;
+        // }
     }
 
     public function update($data, $id)
     {
-        try {
+        // try {
             $room = $this->find($id);
             if (!empty($data['image_file'])) {
                 if (!empty($room->image)) {
@@ -74,22 +73,22 @@ class RoomService extends ImageService
                 $data['image'] = $this->uploadFile($data['image_file'], $this->uploadPath, $room->title);
             }
             return $room->update($data);
-        } catch (Exception $e) {
-            return false;
-        }
+        // } catch (Exception $e) {
+        //     return false;
+        // }
     }
 
     public function delete($id)
     {
-        try {
+        // try {
             $room = $this->find($id);
             if (!empty($room->image)) {
                 $this->deleteUploaded($room->image, $this->uploadPath, $room->title);
             }
             return $room->delete($id);
-        } catch (Exception $e) {
-            return false;
-        }
+        // } catch (Exception $e) {
+        //     return false;
+        // }
     }
 
     public function paginateFront($limit = 6){

@@ -421,7 +421,7 @@ function getUploadPath($folder, $name = null)
     } else {
         $path = $folderPath . $folder;
     }
-    if (config('app.env') == "local") {
+    if (config('app.env') == "local" && getStorageType() != 'local') {
         return "local/" . $path;
     }
     return $path;

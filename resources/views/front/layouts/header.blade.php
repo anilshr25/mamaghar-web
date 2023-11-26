@@ -16,7 +16,7 @@
     <div class="menu">
         <a href="/">
             <div class="logo">
-                <img src="{{ getSiteSetting()->logo_path['original'] ?? asset('front_assets/img/logo.png') }}"
+                <img src="{{ getSiteSetting()->logo['original'] ?? asset('front_assets/img/mamaghar_logo.jpeg') }}"
                     alt="">
             </div>
         </a>
