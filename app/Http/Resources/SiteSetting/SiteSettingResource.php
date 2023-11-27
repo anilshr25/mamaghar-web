@@ -72,6 +72,7 @@ class SiteSettingResource extends JsonResource
             'logo_path' => $this->logo_path,
             'login_bg_path' => $this->login_bg_path,
             'footer_logo_path' => $this->footer_logo_path,
+            'storage_type' => $this->storage_type,
             'display_storage' => in_array(false, $displayStorage) ? false : true,
             'display_smtp_setting' => in_array(false, $displaySmtpSetting) ? false : true,
             'email_logo_image' => $this->email_logo_image,
