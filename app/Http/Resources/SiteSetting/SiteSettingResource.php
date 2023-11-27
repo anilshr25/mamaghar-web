@@ -14,14 +14,14 @@ class SiteSettingResource extends JsonResource
      */
     public function toArray($request)
     {
-        $displaySmtpSetting = [
+        $displayStorage = [
             !empty($this->storage_type),
             !empty($this->storage_access_key),
             !empty($this->storage_secret_key),
             !empty($this->storage_region),
             !empty($this->storage_bucket_name)
         ];
-        $displayStorage = [
+        $displaySmtpSetting = [
             !empty($this->mail_driver),
             !empty($this->mail_host),
             !empty($this->mail_port),
