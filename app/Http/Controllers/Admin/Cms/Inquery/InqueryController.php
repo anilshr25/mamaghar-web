@@ -18,15 +18,7 @@ class InqueryController extends Controller
 
     public function index(Request $request)
     {
-        return $this->inquery->all($request);
-    }
-
-    public function sort(Request $request)
-    {
-        if ($this->inquery->sort($request->all())) {
-            return response(['status' => "OK",], 200);
-        }
-        return response(['status' => 'ERROR', 'errors' => 'Problem occurred.'], 200);
+        return $this->inquery->paginate(20, $request);
     }
 
     public function store(InqueryRequest $request)
