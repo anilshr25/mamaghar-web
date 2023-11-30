@@ -273,6 +273,20 @@ function getBadgeByStatus($actualStatus)
     }
 }
 
+function getBadgeByStatusInquery($actualStatus)
+{
+    switch ($actualStatus) {
+        case '1':
+            return '<span class="text-center badge badge-success rounded text-white">Read</span>';
+
+        case '0':
+            return '<span class="text-center badge badge-danger rounded text-white">Un-Read</span>';
+
+        default:
+            return '<span class="text-center badge badge-danger rounded text-black">Un-Read</span>';
+    }
+}
+
 function getBadgeByFeature($actualStatus)
 {
     switch ($actualStatus) {

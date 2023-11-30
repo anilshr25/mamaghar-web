@@ -159,6 +159,10 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function ($router) 
     $router->apiResource('service', \App\Http\Controllers\Admin\Service\ServiceController::class);
     $router->post('service/{id}', [\App\Http\Controllers\Admin\Service\ServiceController::class, 'update']);
 
+    // Inquiry Route
+    $router->apiResource('inquery', \App\Http\Controllers\Admin\Cms\Inquery\InqueryController::class);
+    $router->post('inquery/{id}', [\App\Http\Controllers\Admin\Cms\Inquery\InqueryController::class, 'update']);
+
     // Adventure Gallery Route
     $router->apiResource('adventure.gallery', \App\Http\Controllers\Admin\Adventure\Gallery\AdventureGalleryController::class);
     $router->post('adventure/{adventureId}/gallery/{id}', [\App\Http\Controllers\Admin\Adventure\Gallery\AdventureGalleryController::class, 'update']);

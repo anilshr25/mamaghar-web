@@ -14,14 +14,14 @@ class SiteSettingResource extends JsonResource
      */
     public function toArray($request)
     {
-        $displaySmtpSetting = [
+        $displayStorage = [
             !empty($this->storage_type),
             !empty($this->storage_access_key),
             !empty($this->storage_secret_key),
             !empty($this->storage_region),
             !empty($this->storage_bucket_name)
         ];
-        $displayStorage = [
+        $displaySmtpSetting = [
             !empty($this->mail_driver),
             !empty($this->mail_host),
             !empty($this->mail_port),
@@ -72,6 +72,7 @@ class SiteSettingResource extends JsonResource
             'logo_path' => $this->logo_path,
             'login_bg_path' => $this->login_bg_path,
             'footer_logo_path' => $this->footer_logo_path,
+            'storage_type' => $this->storage_type,
             'display_storage' => in_array(false, $displayStorage) ? false : true,
             'display_smtp_setting' => in_array(false, $displaySmtpSetting) ? false : true,
             'email_logo_image' => $this->email_logo_image,
