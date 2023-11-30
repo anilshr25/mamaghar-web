@@ -24,7 +24,7 @@ class InqueryResources extends JsonResource
             'message' => $this->message,
             'is_replied' => $this->is_replied,
             'is_active' => $this->is_active ? true : false,
-            'status' => getBadgeByStatus($this->is_active),
+            'status' => getBadgeByStatusInquery($this->is_active),
         ];
         return $resource;
     }

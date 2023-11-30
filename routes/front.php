@@ -12,6 +12,7 @@ $router->get('about',[\App\Http\Controllers\Front\Index\IndexController::class,'
 $router->get('faq',[\App\Http\Controllers\Front\Index\IndexController::class,'faq'])->name('front.faq');
 $router->get('adventure', [\App\Http\Controllers\Front\Index\IndexController::class, 'adventure'])->name('front.adventure');
 $router->get('service', [\App\Http\Controllers\Front\Index\IndexController::class, 'service'])->name('front.service');
+$router->post('inquery', [\App\Http\Controllers\Front\Cms\Inquery\InqueryController::class, 'store'])->name('inquery');
 
 Route::group(['prefix' => 'user'], function ($router) {
 
