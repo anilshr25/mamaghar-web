@@ -38,29 +38,23 @@ class InqueryService
 
     public function store($data)
     {
-        try {
+
             return $this->inquery->create($data);
-        } catch (Exception $e) {
-            return false;
-        }
+
     }
     public function update($data, $id)
     {
-        try {
+
             $inquery = $this->find($id);
             return $inquery->update($data);
-        } catch (Exception $e) {
-            return false;
-        }
+
     }
 
     public function delete($id)
     {
-        try {
+
             $inquery = $this->find($id);
             return $inquery->delete($id);
-        } catch (Exception $e) {
-            return false;
-        }
+
     }
 }

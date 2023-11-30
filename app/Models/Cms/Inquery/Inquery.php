@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inquery extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory;
 
     protected $fillable = [
         'first_name',
@@ -18,16 +18,8 @@ class Inquery extends Model
         'subject',
         'message',
         'is_replied',
-        'status',
+        'is_active',
     ];
 
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'first_name',
-                'on_update' => true,
-            ]
-        ];
-    }
+
 }
